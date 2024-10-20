@@ -21,9 +21,9 @@ int     ft_isalpha(int  c)
         return (0);
 }
 
-int     main(void)
-{
-        printf("lettre minuscule: %d \n", ft_isalpha('a'));
-        printf("lettre majuscule: %d \n", ft_isalpha('A'));
-        printf("chiffre: %d \n", ft_isalpha('1'));
-}
+// int     main(void)
+// {
+//         printf("lettre minuscule: %d \n", ft_isalpha('a'));
+//         printf("lettre majuscule: %d \n", ft_isalpha('A'));
+//         printf("chiffre: %d \n", ft_isalpha('1'));
+// }

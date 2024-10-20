@@ -24,9 +24,7 @@ char    ft_toupper(char c)
         
 }
 
-
-
-int     main(void)
-{
-        printf("test une lettre: %c", ft_toupper('F'));
-}
+// int     main(void)
+// {
+//         printf("test une lettre: %c", ft_toupper('F'));
+// }

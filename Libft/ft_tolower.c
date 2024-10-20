@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 
-char    ft_toupper(char c)
+char    ft_tolower(char c)
 {
         if (c >= 'A' && c <= 'Z')
         {
@@ -24,9 +24,7 @@ char    ft_toupper(char c)
         
 }
 
-
-
-int     main(void)
-{
-        printf("test une lettre: %c", ft_toupper('+'));
-}
+// int     main(void)
+// {
+//         printf("test une lettre: %c", ft_toupper('+'));
+// }
