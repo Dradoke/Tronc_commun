@@ -13,42 +13,40 @@
 #include <stdio.h>
 #include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_memset(void *s, int c, size_t n)
 {
 	char	*ptr;
 
 	ptr = (char *)s;
 	while (n != 0)
 	{
-		ptr[n - 1] = '\0';
+		ptr[n - 1] = c;
 		n--;
 	}
 }
 
-/*
-int	main(void)
-{
-		char    test[] = "coucou";
-	int	i;
-	int	f;
-	int	length;
+// int	main(void)
+// {
+// 	char	test[] = "coucou";
+// 	int		i;
+// 	int		f;
+// 	int		length;
 
-		i = 0;
-		f = 0;
-		length = 3;
-		printf("avant: ");
-			while (test[i])
-		{
-				printf("%c ", test[i]);
-				i++;
-		}
-		printf("\n");
-		ft_bzero(&test, 3);
-		printf("apres: ");
-		while (f < (length + 3))
-		{
-				printf("%c ", test[f]);
-				f++;
-		}
-}
-*/
+// 	i = 0;
+// 	f = 0;
+// 	length = 3;
+// 	printf("avant: ");
+// 	while (test[i])
+// 	{
+// 		printf("%c ", test[i]);
+// 		i++;
+// 	}
+// 	printf("\n");
+// 	ft_memset(&test, 'e', 3);
+// 	printf("apres: ");
+// 	while (f < (length + 3))
+// 	{
+// 		printf("%c ", test[f]);
+// 		f++;
+// 	}
+// }
