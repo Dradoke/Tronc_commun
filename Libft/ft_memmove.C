@@ -47,11 +47,11 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 	return (destination);
 }
 
-int main(void)
-{
-	char dest[] = "bonjour toi";
-	char src[] = "coucou";
-	int length = 0;
+// int main(void)
+// {
+// 	char dest[] = "bonjour toi";
+// 	char src[] = "coucou";
+// 	int length = 0;
 
-	printf("dest = %s \n", ft_memmove(dest, src, length));
-}
+// 	printf("dest = %s \n", ft_memmove(dest, src, length));
+// }

@@ -29,11 +29,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-int	main(void)
-{
-	char dest[] = "bonjour";
-	char src[] = "coucou";
-	int length = 3;
+// int	main(void)
+// {
+// 	char dest[] = "bonjour";
+// 	char src[] = "coucou";
+// 	int length = 3;
 
-	printf("dest = %s \n", ft_memcpy(dest, src, length));
-}
+// 	printf("dest = %s \n", ft_memcpy(dest, src, length));
+// }

@@ -26,24 +26,24 @@ void *ft_memset(void *s, int c, size_t n)
 	return (ptr);
 }
 
-int	main(void)
-{
-	char	test[] = "coucou";
-	int		i;
-	int		f;
-	int		length;
+// int	main(void)
+// {
+// 	char	test[] = "coucou";
+// 	int		i;
+// 	int		f;
+// 	int		length;
 
-	i = 0;
-	f = 0;
-	length = 3;
-	printf("avant: ");
+// 	i = 0;
+// 	f = 0;
+// 	length = 3;
+// 	printf("avant: ");
 
-	printf("%s", test);
+// 	printf("%s", test);
 
-	printf("\n");
+// 	printf("\n");
 	
-	printf("apres: ");
+// 	printf("apres: ");
 
-	printf("%s", ft_memset(&test, 'e', 3));
+// 	printf("%s", ft_memset(&test, 'e', 3));
 	
-}
+// }

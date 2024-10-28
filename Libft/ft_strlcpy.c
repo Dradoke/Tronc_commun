@@ -30,22 +30,22 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (i);
 }
 
-int	main(void)
-{
-	char dst[50];
-	const char *src = "coucou";
-	int length;
+// int	main(void)
+// {
+// 	char dst[50];
+// 	const char *src = "coucou";
+// 	int length;
 
-	length = 6;
-	printf("avant: ");
+// 	length = 6;
+// 	printf("avant: ");
 
-	printf("%s", dst);
+// 	printf("%s", dst);
 
-	printf("\n");
+// 	printf("\n");
 
-	printf("apres: ");
+// 	printf("apres: ");
 
-	ft_strlcpy(dst, src, length);
+// 	ft_strlcpy(dst, src, length);
 
-	printf("%s", dst);
-}
+// 	printf("%s", dst);
+// }
