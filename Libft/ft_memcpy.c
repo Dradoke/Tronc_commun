@@ -1,49 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 15:18:46 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/10/20 15:18:46 by ngaudoui         ###   ########.fr       */
+/*   Created: 2024/10/20 18:19:38 by ngaudoui          #+#    #+#             */
+/*   Updated: 2024/10/20 18:19:38 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <string.h>
 
-void *ft_memset(void *s, int c, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*ptr;
+	size_t				i;
+	unsigned char		*destination;
+	const unsigned char	*source;
 
-	ptr = (char *)s;
-	while (n != 0)
+	destination = (unsigned char *)dest;
+	source = (const unsigned char *)src;
+	i = 0;
+	while (i < n)
 	{
-		ptr[n - 1] = c;
-		n--;
+		destination[i] = source[i];
+		i++;
 	}
-	return (ptr);
+	return (dest);
 }
 
 int	main(void)
 {
-	char	test[] = "coucou";
-	int		i;
-	int		f;
-	int		length;
+	char dest[] = "bonjour";
+	char src[] = "coucou";
+	int length = 3;
 
-	i = 0;
-	f = 0;
-	length = 3;
-	printf("avant: ");
-
-	printf("%s", test);
-
-	printf("\n");
-	
-	printf("apres: ");
-
-	printf("%s", ft_memset(&test, 'e', 3));
-	
+	printf("dest = %s \n", ft_memcpy(dest, src, length));
 }

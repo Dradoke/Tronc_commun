@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
+/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 15:18:46 by ngaudoui          #+#    #+#             */
 /*   Updated: 2024/10/20 15:18:46 by ngaudoui         ###   ########.fr       */
@@ -15,9 +15,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*ptr;
+	unsigned char	*ptr;
 
-	ptr = (char *)s;
+	ptr = (unsigned char *)s;
 	while (n != 0)
 	{
 		ptr[n - 1] = '\0';

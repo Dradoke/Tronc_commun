@@ -1,49 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 15:18:46 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/10/20 15:18:46 by ngaudoui         ###   ########.fr       */
+/*   Created: 2024/10/23 18:33:17 by ngaudoui          #+#    #+#             */
+/*   Updated: 2024/10/23 18:33:17 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <string.h>
 
-void *ft_memset(void *s, int c, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char	*ptr;
+	size_t	i;
 
-	ptr = (char *)s;
-	while (n != 0)
+	i = 0;
+	if (size <= 0)
 	{
-		ptr[n - 1] = c;
-		n--;
+		return (size);
 	}
-	return (ptr);
+	while (src[i] && size - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (i);
 }
 
 int	main(void)
 {
-	char	test[] = "coucou";
-	int		i;
-	int		f;
-	int		length;
+	char dst[50];
+	const char *src = "coucou";
+	int length;
 
-	i = 0;
-	f = 0;
-	length = 3;
+	length = 6;
 	printf("avant: ");
 
-	printf("%s", test);
+	printf("%s", dst);
 
 	printf("\n");
-	
+
 	printf("apres: ");
 
-	printf("%s", ft_memset(&test, 'e', 3));
-	
+	ft_strlcpy(dst, src, length);
+
+	printf("%s", dst);
 }
