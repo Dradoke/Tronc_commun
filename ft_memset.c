@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
+/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 15:18:46 by ngaudoui          #+#    #+#             */
 /*   Updated: 2024/10/20 15:18:46 by ngaudoui         ###   ########.fr       */
@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void	ft_memset(void *s, int c, size_t n)
+void *ft_memset(void *s, int c, size_t n)
 {
 	char	*ptr;
 
@@ -23,6 +23,7 @@ void	ft_memset(void *s, int c, size_t n)
 		ptr[n - 1] = c;
 		n--;
 	}
+	return (ptr);
 }
 
 // int	main(void)
@@ -36,17 +37,13 @@ void	ft_memset(void *s, int c, size_t n)
 // 	f = 0;
 // 	length = 3;
 // 	printf("avant: ");
-// 	while (test[i])
-// 	{
-// 		printf("%c ", test[i]);
-// 		i++;
-// 	}
+
+// 	printf("%s", test);
+
 // 	printf("\n");
-// 	ft_memset(&test, 'e', 3);
+	
 // 	printf("apres: ");
-// 	while (f < (length + 3))
-// 	{
-// 		printf("%c ", test[f]);
-// 		f++;
-// 	}
+
+// 	printf("%s", ft_memset(&test, 'e', 3));
+	
 // }

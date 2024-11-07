@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
+/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 23:46:04 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/10/15 23:46:04 by ngaudoui         ###   ########.fr       */
+/*   Created: 2024/11/06 18:41:46 by ngaudoui          #+#    #+#             */
+/*   Updated: 2024/11/06 19:05:40 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
 #include <stdio.h>
 
-
-char    ft_tolower(char c)
+void	*ft_memchr(const void *arr, int c, size_t n)
 {
-        if (c >= 'A' && c <= 'Z')
-        {
-                return (c + 32);
-        }
-        return (c);
-        
-}
+	unsigned char	*str;
+	unsigned char	ch;
+	size_t  i;
 
-// int     main(void)
-// {
-//         printf("test une lettre: %c", ft_toupper('+'));
-// }
+	i = 0;
+	str = (unsigned char *)arr;
+	ch = (unsigned char)c;
+	while (i < n)
+	{
+		if (str[i] == ch)
+			return (str + i);
+		i++;
+	}
+	return (NULL);
+}
