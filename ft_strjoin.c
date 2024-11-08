@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:00:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/07 16:00:09 by ngaudoui         ###   ########.fr       */
+/*   Created: 2024/11/08 17:50:28 by ngaudoui          #+#    #+#             */
+/*   Updated: 2024/11/08 17:50:28 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned int	s_length;
-	char	*substring;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	total_len;
+	int		i;
+	int		j;
+	char	*str;
 
-	s_length = (ft_strlen(s) + 1);
-	if (start > s_length)
+	total_len = (ft_strlen(s1) + ft_strlen(s2) + 1);
+	i = 0;
+	j = 0;
+	str = malloc(total_len);
+	if (!str)
 	{
 		return (NULL);
 	}
-	if (start + len > s_length)
+	while (s1[i])
 	{
-		len = s_length - start;
+		str[i] = s1[i];
+		i++;
 	}
-	substring = malloc(len);
-	ft_strlcpy(substring, &s[start], len);
-	return (substring);
+	while (s2[j])
+	{
+		str[i] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-int	main(void)
-{
-	printf("%s", ft_substr("coucou je m'appel Nathan", 7, 17));
-}
+// int     main(void)
+// {
+//         printf("%s", ft_strjoin("coucou je ", "m'appel Nathan"));
+// }
