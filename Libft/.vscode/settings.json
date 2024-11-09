@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "string.h": "c",
-    "ft_memmove.C": "cpp"
-  },
-  "C_Cpp.errorSquiggles": "disabled"
-}
