@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 23:46:04 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/06 19:13:27 by ngaudoui         ###   ########.fr       */
+/*   Created: 2024/11/09 05:16:38 by ngaudoui          #+#    #+#             */
+/*   Updated: 2024/11/09 05:16:38 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
+#include <unistd.h>
 
-
-int    ft_toupper(int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-        if (c >= 'a' && c <= 'z')
-        {
-                return (c - 32);
-        }
-        return (c);
-        
+	if (!s)
+	{
+		return ;
+	}
+
+	size_t len;
+
+	len = ft_strlen(s);
+	write(fd, s, len);
 }
 
 // int     main(void)
 // {
-//         printf("test une lettre: %c", ft_toupper('f'));
+//         ft_putstr_fd("je suis un test", 1);
 // }
