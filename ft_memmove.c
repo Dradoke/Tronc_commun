@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:19:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/10/20 18:19:38 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:30:01 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 
 	if (destination == source || n == 0)
 	{
-		return (destination);
+		return (dest);
 	}
 	
-	if (destination > source && destination < source + n)
+	if (destination > source)
 	{
-		i = n;
-		while (i > 0)
+		while (n > 0)
 		{
-			destination[i] = source[i];
-			i--;
+			n--;
+			destination[n] = source[n];
 		}
 	}
 	else
@@ -45,14 +44,14 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 			i++;
 		}
 	}
-	return (destination);
+	return (dest);
 }
 
 // int main(void)
 // {
 // 	char dest[] = "bonjour toi";
 // 	char src[] = "coucou";
-// 	int length = 0;
-
-// 	printf("dest = %s \n", ft_memmove(dest, src, length));
+// 	int length = 6;
+// 	ft_memmove(dest, src, length);
+// 	printf("dest = %s \n", dest);
 // }

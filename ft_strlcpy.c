@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:33:17 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/10/23 18:33:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:40:22 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	i = 0;
 	if (size <= 0)
 	{
-		return (size);
+		return (ft_strlen(src));
 	}
-	while (src[i] && size - 1)
+	while (src[i] && i < size - 1)
 	{
 		dst[i] = src[i];
 		i++;
 	}
 	dst[i] = '\0';
-	return (i);
+	return (ft_strlen(src));
 }
 
 // int	main(void)

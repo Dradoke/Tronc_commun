@@ -1,3 +1,9 @@
+# Nom de la bibliotheque a generer
+NAME = libft.a
+
+# Options de compilations
+CFLAGS = -Wall -Wextra -Werror
+
 # Liste des fichiers sources
 FILES = ft_isalpha.c \
 	ft_isdigit.c \
@@ -34,17 +40,14 @@ FILES = ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c 
 # Liste des fichiers sources BONUS
-BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-		ft_lstmap.c
+# BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+# 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+# 		ft_lstmap.c
 # Liste des fichiers Objets creer a partir de 'FILES' (Fichiers sources)
 OBJ = $(FILES:.c=.o)
 # Liste des fichiers Objets BONUS creer a partir de 'BONUS_FILES' (Fichiers sources)
-BONUS_OBJ = $(BONUS_FILES:.c=.o)
-# Nom de la bibliotheque a generer
-NAME = libft.a
-# Options de compilations
-CFLAGS = -Wall -Wextra -Werror
+# BONUS_OBJ = $(BONUS_FILES:.c=.o)
+
 # Commande pour supprimer des fichiers avec option -f (pas d'erreur)
 RM = rm -f
 
@@ -59,25 +62,20 @@ $(NAME) : $(OBJ)
 $(OBJ):		$(FILES)
 	@gcc -c $(CFLAGS) $(FILES)
 
-bonus:		$(BONUS_FILES)
-	@gcc -c $(FLAG) $(BONUS_FILES)
-	@ar rcs $(NAME) $(BONUS_OBJ)
-	@ranlib $(NAME)
+# bonus:		$(BONUS_FILES)
+# 	@gcc -c $(FLAG) $(BONUS_FILES)
+# 	@ar rcs $(NAME) $(BONUS_OBJ)
+# 	@ranlib $(NAME)
+
 clean:
-	@$(RM) $(OBJ) $(BONUS_OBJ)
+	@$(RM) $(OBJ) 
+# $(BONUS_OBJ)
 	@echo "OBJ deleted"
+
 fclean:		clean
 	@$(RM) $(NAME)
 	@echo "$(NAME) deleted"
+
 re:	fclean all
-normi:		$(FILES)
-	norminette $(FILES)
-normib:	$(BONUS_FILES)
-	norminette $(BONUS_FILES)
-test:		 main.c $(NAME) bonus
-	@gcc $(FLAG) main.c $(NAME) && ./a.out
-git:
-	git add .
-	git commit -m "$m"
-	git push origin main
+
 .PHONY: all, clean, fclean, re
