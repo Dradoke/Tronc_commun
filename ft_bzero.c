@@ -26,30 +26,28 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-/*
-int	main(void)
-{
-		char    test[] = "coucou";
-	int	i;
-	int	f;
-	int	length;
+// int	main(void)
+// {
+// 		char    test[] = "coucou";
+// 	int	i;
+// 	int	f;
+// 	int	length;
 
-		i = 0;
-		f = 0;
-		length = 3;
-		printf("avant: ");
-			while (test[i])
-		{
-				printf("%c ", test[i]);
-				i++;
-		}
-		printf("\n");
-		ft_bzero(&test, 3);
-		printf("apres: ");
-		while (f < (length + 3))
-		{
-				printf("%c ", test[f]);
-				f++;
-		}
-}
-*/
+// 		i = 0;
+// 		f = 0;
+// 		length = ft_strlen(test);
+// 		printf("avant: ");
+// 			while (test[i])
+// 		{
+// 				printf("%c ", test[i]);
+// 				i++;
+// 		}
+// 		printf("\n");
+// 		ft_bzero(&test, 3);
+// 		printf("apres: ");
+// 		while (f < (length))
+// 		{
+// 				printf("%c ", test[f]);
+// 				f++;
+// 		}
+// }
