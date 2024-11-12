@@ -33,7 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substring);
 }
 
-int	main(void)
-{
-	printf("%s", ft_substr("coucou je m'appel Nathan", 7, 17));
-}
+// int	main(void)
+// {
+// 	printf("%s", ft_substr("coucou je m'appel Nathan", 7, 17));
+// }

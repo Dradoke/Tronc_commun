@@ -52,18 +52,6 @@ char * ft_strnstr(const char *big, const char *little, size_t len)
         
 }
 
-int	ft_strlen(char *c)
-{
-	int	i;
-
-	i = 0;
-	while (c[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 // int     main(void)
 // {
 //         printf("%s", ft_strnstr("coucou comment tu vas ?", "tu", 17));

@@ -34,7 +34,7 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd((n % 10) + '0', fd);
 }
 
-int	main(void)
-{
-	ft_putnbr_fd(-12345, 1);
-}
+// int	main(void)
+// {
+// 	ft_putnbr_fd(-12345, 1);
+// }

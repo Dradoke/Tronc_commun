@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
 
 void	*ft_memchr(const void *arr, int c, size_t n)
@@ -29,3 +30,11 @@ void	*ft_memchr(const void *arr, int c, size_t n)
 	}
 	return (NULL);
 }
+
+// int    main(void)
+// {
+//     char    str[] = "Hello World!";
+//     printf("%s\n", ft_memchr(str, 'W', 20));
+//     printf("%s\n", memchr(str, 'W', 20));
+//     return (0);
+// }

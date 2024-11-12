@@ -29,15 +29,15 @@ void	*ft_calloc(size_t nelem, size_t elsize)
 	return (ptr);
 }
 
-int	main(void)
-{
-	size_t i = 0;
-	size_t tab_size = 10;
+// int	main(void)
+// {
+// 	size_t i = 0;
+// 	size_t tab_size = 10;
 
-	int *tab = ft_calloc(5, sizeof(int));
-	while (i != tab_size)
-	{
-		printf("test du tableau tab[%d] = %d\n", i, tab[i]);
-		i++;
-	}
-}
+// 	int *tab = ft_calloc(5, sizeof(int));
+// 	while (i != tab_size)
+// 	{
+// 		printf("test du tableau tab[%d] = %d\n", i, tab[i]);
+// 		i++;
+// 	}
+// }

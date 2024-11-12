@@ -38,7 +38,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 
 // int     main(void)
 // {
-//         char str[] = "Coucou C'est moi Nathan";
+//         char str[] = "coucou C'est moi Nathan";
 //         ft_striteri(str, my_transform);
 //         printf("Resultat: %s\n", str);
 //         return (0);

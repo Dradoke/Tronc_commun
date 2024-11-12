@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	negatif;
@@ -43,6 +44,7 @@ int	ft_atoi(char *str)
 		}
 		return (result * negatif);
 	}
+	return (0);
 }
 
 // int     main(void)

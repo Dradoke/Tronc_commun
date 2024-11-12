@@ -117,14 +117,14 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-int	main(void)
-{
-	char **test = ft_split("coucou je suis moi", ' ');
-	int i = 0;
+// int	main(void)
+// {
+// 	char **test = ft_split("coucou je suis moi", ' ');
+// 	int i = 0;
 
-	while (test[i])
-	{
-		printf("%s\n", test[i]);
-		i++;
-	}
-}
+// 	while (test[i])
+// 	{
+// 		printf("%s\n", test[i]);
+// 		i++;
+// 	}
+// }
