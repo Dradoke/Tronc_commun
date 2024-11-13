@@ -6,53 +6,39 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:54:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/06 18:38:15 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:56:36 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
+#include <stdio.h>
 
-char * ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-        size_t  i;
-        size_t  j;
-        size_t  little_len;
-        
-        i = 0;
-        j = 0;
-        little_len = 0;
-        if (little[i] == '\0')
-        {
-                return ((char *)big);
-        }
-        
-        while (little[little_len])
-        {
-                little_len ++;
-        }
-        
-        while (big[i] && i != len)
-        {
-                if (big[i] == little[j])
-                {
-                        while (big[i] == little[j])
-                        {
-                                if (little[little_len - 1] == big[i])
-                                {
-                                        return ((char *)big + (i - little_len));
-                                }
-                                i++;
-                                j++;
-                        }
-                }
-                i++;
-        }
-        return (NULL);
-        
+	size_t	i;
+	size_t	j;
+	size_t	little_len;
+	char	*ptr_str;
+
+	i = 0;
+	little_len = ft_strlen(little);
+	ptr_str = (char *)big;
+	if (little_len == 0 || big == little)
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (big[i + j] != '\0' && little[j] != '\0' && big[i
+			+ j] == little[j] && i + j < len)
+			j++;
+		if (j == little_len)
+			return (ptr_str + i);
+		i++;
+	}
+	return (0);
 }
 
 // int     main(void)
 // {
-//         printf("%s", ft_strnstr("coucou comment tu vas ?", "tu", 17));
+//         printf("%s", ft_strnstr("aaabcabcd", "aabc", -1));
 // }

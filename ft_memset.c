@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void *ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*ptr;
 
@@ -42,9 +42,9 @@ void *ft_memset(void *s, int c, size_t n)
 // 	printf("%s", test);
 
 // 	printf("\n");
-	
+
 // 	printf("apres: ");
 
 // 	printf("%s", ft_memset(&test, 'e', 3));
-	
+
 // }

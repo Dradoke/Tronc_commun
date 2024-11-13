@@ -6,38 +6,29 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:09:27 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/06 17:27:14 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:00:01 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-        size_t i;
-        char    ch;
+	int	i;
 
-        ch = c;
-        i = 0;
-        while (s[i])
-        {
-                i++;
-        }
-        while (i != 0)
-        {
-                if (s[i] == ch)
-                {
-                        return ((char *)s + i);
-                }
-                i--;
-        }
-        return (NULL);
-        
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if ((unsigned char)s[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i--;
+	}
+	return (NULL);
 }
 
 // int     main(void)
 // {
 //         char    *s = "coucou Nathan";
-//         printf("%s", ft_strrchr(s, 'a'));
+//         printf("%s", ft_strrchr(s, 0));
 // }
