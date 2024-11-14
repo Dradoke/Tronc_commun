@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:11:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/13 16:54:07 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:46:00 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 }
 // int	main(void)
 // {
-//         printf("%s", ft_strtrim( "lorem \n ipsum \t dolor \n sit \t amet"," "));
+// printf("%s", ft_strtrim( "lorem \n ipsum 
+//\t dolor \n sit \t amet"," "));
 // }

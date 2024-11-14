@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:00:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/13 15:35:43 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:50:27 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*substring;
 	size_t	i;
 
-	// unsigned int	s_length;
 	i = start;
 	if (!s)
 		return (0);
@@ -36,7 +35,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		substring[i] = s[start + i];
 		i++;
 	}
-	// ft_strlcpy(substring, &s[start], len + 1);
 	return (substring);
 }
 
