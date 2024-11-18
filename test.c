@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex_lower.c                               :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 16:33:58 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/18 17:25:04 by ngaudoui         ###   ########.fr       */
+/*   Created: 2024/11/18 14:44:15 by ngaudoui          #+#    #+#             */
+/*   Updated: 2024/11/18 14:47:02 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include <stdio.h>
 
-void ft_print_hex_lower(unsigned int n)
+
+
+
+int     main(void)
 {
-        
+        int     result = printf("Coucou je suis un test %s", "et voila\n");
+        printf("%d: resultat du printf", result);
 }

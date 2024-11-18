@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
+/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:33:30 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/09 16:33:30 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:25:08 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "printf.h"
 
 void ft_print_int(int n)
 {

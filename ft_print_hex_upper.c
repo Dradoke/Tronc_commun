@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex_upper.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.com>                   +#+  +:+       +#+        */
+/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:34:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/09 16:34:12 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:25:06 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "printf.h"
 
 void ft_print_hex_upper(unsigned int n)
 {
