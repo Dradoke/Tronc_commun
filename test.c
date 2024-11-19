@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:44:15 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/11/18 14:47:02 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:54:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 
 int     main(void)
 {
-        int     result = printf("Coucou je suis un test %s", "et voila\n");
-        printf("%d: resultat du printf", result);
+        // long     result = 4546668526516;
+        printf("%x: resultat du printf", sizeof(4546668526516));
 }
