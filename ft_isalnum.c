@@ -26,7 +26,7 @@ int	ft_isalnum(int c)
 	return (0);
 }
 
-// int     main(void)
+// int	main(void)
 // {
 //         printf("test lettre minuscule: %d .\n", ft_isalnum('a'));
 //         printf("test lettre Majuscule: %d .\n", ft_isalnum('A'));
