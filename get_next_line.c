@@ -62,3 +62,26 @@ char	*get_next_line(int fd)
 	else
 		return NULL;
 }
+
+int main(void) {
+    int fd;
+    char *line;
+
+    // Ouvrir le fichier text.txt en mode lecture seule
+    fd = open("text.txt", O_RDONLY);
+    if (fd == -1) {
+        perror("Erreur lors de l'ouverture du fichier");
+        return 1;
+    }
+
+    // Lire et afficher chaque ligne du fichier
+    while ((line = get_next_line(fd)) != NULL) {
+        printf("%s", line);
+        free(line); // N'oubliez pas de libérer la mémoire allouée par get_next_line
+    }
+
+    // Fermer le fichier
+    close(fd);
+
+    return 0;
+}
