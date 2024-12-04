@@ -49,6 +49,8 @@ char	*get_next_line(int fd)
 	char	temp[BUFFER_SIZE + 1];
 	ssize_t	bytes_read;
 
+	if (!buffer)
+		buffer = ft_strdup("");
 	while (!ft_strchr(buffer, '\n'))
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
@@ -63,25 +65,25 @@ char	*get_next_line(int fd)
 		return NULL;
 }
 
-int main(void) {
-    int fd;
-    char *line;
+// int main(void) {
+//     int fd;
+//     char *line;
 
-    // Ouvrir le fichier text.txt en mode lecture seule
-    fd = open("text.txt", O_RDONLY);
-    if (fd == -1) {
-        perror("Erreur lors de l'ouverture du fichier");
-        return 1;
-    }
+//     // Ouvrir le fichier text.txt en mode lecture seule
+//     fd = open("text.txt", O_RDONLY);
+//     if (fd == -1) {
+//         perror("Erreur lors de l'ouverture du fichier");
+//         return 1;
+//     }
 
-    // Lire et afficher chaque ligne du fichier
-    while ((line = get_next_line(fd)) != NULL) {
-        printf("%s", line);
-        free(line); // N'oubliez pas de libérer la mémoire allouée par get_next_line
-    }
+//     // Lire et afficher chaque ligne du fichier
+//     while ((line = get_next_line(fd)) != NULL) {
+//         printf("%s", line);
+//         free(line); // N'oubliez pas de libérer la mémoire allouée par get_next_line
+//     }
 
-    // Fermer le fichier
-    close(fd);
+//     // Fermer le fichier
+//     close(fd);
 
-    return 0;
-}
+//     return 0;
+// }

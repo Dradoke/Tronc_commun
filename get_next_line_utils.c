@@ -35,7 +35,7 @@ char	*extract_line(char	**buffer)
 	if ((*buffer)[i] == '\n')
 		remaining = ft_strdup(&(*buffer)[i + 1]);
 	else
-		return NULL;
+		remaining = NULL;
 	free(*buffer);
 	*buffer = remaining;
 	return	line;
@@ -95,6 +95,9 @@ char	*ft_strdup(const char *s)
 	if (!dup)
 		return NULL;
 	while (i <= len)
+	{
 		dup[i] = s[i];
+		i++;
+	}
 	return	dup;
 }
