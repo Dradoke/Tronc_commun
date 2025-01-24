@@ -16,9 +16,9 @@ SRC = $(addprefix $(SOURCE_PATH)/,$(SOURCES_NAME))
 
 OBJ = $(addprefix $(OBJECTS_PATH)/,$(OBJECTS_NAME))
 
-MLX_DIR = /lib/minilibx
+MLX_DIR = ./lib/minilibx
 
-CPPFLAGS = -I $(MLX_DIR) \ -I./includes/
+CPPFLAGS = -I ./lib/minilibx/ \ -I ./includes/
 
 LFT = -lft
 
@@ -26,31 +26,24 @@ LDFLAGS = -L ./libft/
 
 MLX = -lmlx -framework OpenGL -framework AppKit
 
-#FLAGS = -Wall -Wextra -Werror
-#LINKS = -I libft -L libft \
-    -I /usr/local/include -L /usr/local/lib \
-    -l mlx -l ft -framework OpenGL -framework Appkit
-
-# Remember to implement your rules...
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
-        @make -C./libft/
-        @echo "Creation of $(NAME)"
-        @$(CC) $(LDFLAGS) $(LFT) $(OBJ) -o $@ $(MLX)
-        @echo "$(NAME) created\n"
+		@make -C./libft/
+		@echo "Creation of $(NAME)"
+		@$(CC) $(LDFLAGS) $(LFT) $(OBJ) -o $@ $(MLX)
+		@echo "$(NAME) created\n"
 
 $(OBJECTS_PATH)%.o: $(SOURCE_PATH)%.c
-    @mkdir $(OBJECTS_PATH) 2> /dev/null || true
-    @$(CC) $(CPPFLAGS) -o $@ -c $<
+	@mkdir $(OBJECTS_PATH) 2> /dev/null || true
+	@$(CC) $(CPPFLAGS) -o $@ -c $<
 
-clean :
-    @make clean -C ./libft/
-    @echo "Removal of .o files of $(NAME) ..."
-    @rm -f $(OBJ)
-    @rmdir $(OBJECTS_PATH) 2> /dev/null || true
-    @echo "Files .o deleted\n"
+clean:
+	@make clean -C ./libft/
+	@echo "Removal of .o files of $(NAME) ..."
+	@rm -f $(OBJ)
+	@rmdir $(OBJECTS_PATH) 2> /dev/null || true
+	@echo "Files .o deleted\n"
 
 fclean: clean
 	@make fclean -C ./libft/
