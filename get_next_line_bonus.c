@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2024/11/25 15:25:24 by ngaudoui          #+#    #+#             */
-/*   Updated: 2024/12/09 21:04:30 by ngaudoui         ###   ########.fr       */
-=======
-/*   Created: 2025/01/21 14:17:27 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/21 14:54:57 by ngaudoui         ###   ########.fr       */
->>>>>>> 7fe30ef21dbc8bc400e2ba16e4b1a9a4000dd3b9
+/*   Created: 2025/01/21 14:54:42 by ngaudoui          #+#    #+#             */
+/*   Updated: 2025/01/21 15:05:46 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_free(char *buffer, char *buff)
 {
@@ -100,15 +95,15 @@ char	*read_file(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
+	static char	*buff[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buff = read_file(fd, buff);
-	if (!buff)
+	buff[fd] = read_file(fd, buff[fd]);
+	if (!buff[fd])
 		return (NULL);
-	line = ft_line(buff);
-	buff = ft_next(buff);
+	line = ft_line(buff[fd]);
+	buff[fd] = ft_next(buff[fd]);
 	return (line);
 }

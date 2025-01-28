@@ -3,3 +3,4 @@
 *.o
 *.gch
 test.c
+*.txt
