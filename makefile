@@ -1,60 +1,50 @@
+# Variables
 NAME = fdf
+# Compilateur
+CC = gcc
+# Compilation options 
+# !!!!! RAJOUTER WERROR !!!!!
+CFLAGS = -Wall -Wextra -Iinclude/ -Iminilibx/
+#-lft	# Link options for libs
+LDFLAGS = -Llib -Lminilibx -lmlx_Linux -lm -lXext -lX11 -lz
+# sources directory
+SRC = src/
+# objects directory
+OBJ = obj/
+# Bin directory
+BIN = bin/
+# Libs directory
+LIB = lib
+MINILIBX = minilibx/
 
-CFLAGS = -Wall -Wextra -Werror  #options de compilations
+# Sources files
+SRCS = $(wildcard $(SRC)*.c)
+OBJS = $(patsubst $(SRC)%.c, $(OBJ)%.o, $(SRCS))
 
-CC = gcc $(CFLAGS) #Compilateur
+# Default target
+all: $(BIN)$(NAME)
 
-SOURCE_PATH = ./sources/
+# Executable target
+$(BIN)$(NAME): $(OBJS) #$(LIB)/libft.a
+	@mkdir -p $(BIN)
+	$(CC) $(OBJS) $(LDFLAGS) -o $@
 
-SOURCES_NAME = test.c
+# Compiling rules for .c files to .o files
+$(OBJ)%.o: $(SRC)%.c
+	@mkdir -p $(OBJ)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-OBJECTS_PATH = ./objects/
+#$(LIB)/libft.a:
 
-OBJECTS_NAME = $(SOURCES_NAME:.c=.o)
-
-SRC = $(addprefix $(SOURCE_PATH)/,$(SOURCES_NAME))
-
-OBJ = $(addprefix $(OBJECTS_PATH)/,$(OBJECTS_NAME))
-
-MLX_DIR = ./lib/minilibx
-
-CPPFLAGS = -I ./lib/minilibx/ \ -I ./includes/
-
-LFT = -lft
-
-LDFLAGS = -L ./libft/
-
-MLX = -lmlx -framework OpenGL -framework AppKit
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-		@make -C./libft/
-		@echo "Creation of $(NAME)"
-		@$(CC) $(LDFLAGS) $(LFT) $(OBJ) -o $@ $(MLX)
-		@echo "$(NAME) created\n"
-
-$(OBJECTS_PATH)%.o: $(SOURCE_PATH)%.c
-	@mkdir $(OBJECTS_PATH) 2> /dev/null || true
-	@$(CC) $(CPPFLAGS) -o $@ -c $<
-
+# Delete obj, bin and lib directories
 clean:
-	@make clean -C ./libft/
-	@echo "Removal of .o files of $(NAME) ..."
-	@rm -f $(OBJ)
-	@rmdir $(OBJECTS_PATH) 2> /dev/null || true
-	@echo "Files .o deleted\n"
+	rm -rf $(OBJ) $(LIB)
 
+# Delete bin directory
 fclean: clean
-	@make fclean -C ./libft/
-	@echo "Removal of $(NAME)..."
-	@rm -f $(NAME)
-	@echo "Binary $(NAME) deleted\n"
+	rm -rf $(BIN)
 
-re: fclean all
+# Rebuild from zero
+re: clean $(BIN)$(NAME)
 
-norme:
-	norminette $(SRC)
-	norminette $(INC_PATH)*.h
-
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
