@@ -6,12 +6,15 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/29 11:07:32 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:37:47 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../include/fdf.h"
+
+#define ESC = 65307
+#define A 97
 
 typedef struct	s_data {
 	void	*img;
@@ -29,7 +32,7 @@ typedef struct	s_vars {
 typedef struct s_timeval {
 	long	sec;
 	long	usec;
-}				t_timeval
+}				t_timeval;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -57,13 +60,15 @@ int	handle_visibility_event(int visibility, void *param)
 	return (0);
 }
 
-int	key_press(int keycode, t_vars *vars)
+int	key_press(int keycode, t_vars *vars, void *param)
 {
-	if (keycode == 65307)
+	if (keycode == ESC)
 	{
 		printf("end of window\n");
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
+	if (keycode == 32)
+		printf("%i", gettimeofday(&param, NULL));
 	return (0);
 }
 long long	time_between(t_timeval start, t_timeval end)
@@ -71,7 +76,9 @@ long long	time_between(t_timeval start, t_timeval end)
 	long long	start_ms;
 	long long	end_ms;
 	
-	//start_ms = 
+	start_ms = start.sec * 1000LL + start.usec / 1000;
+	end_ms = end.sec * 1000LL + end.usec / 1000;
+	return (end_ms - start_ms);
 }
 
 int	close_window(void *param)
@@ -85,10 +92,13 @@ int main(void)
 {
     void    *mlx;
     void    *mlx_win;
+	t_timeval timestart;
+	t_timeval timeend;
 
+	
 	mlx = mlx_init();
     mlx_win = mlx_new_window(mlx, 1920, 1080, "Test");
-	mlx_hook(mlx_win, 2,1L << 0, key_press, NULL);
+	mlx_hook(mlx_win, 2,1L << 0, key_press, &timestart);
 	mlx_hook(mlx_win,17,1L<<17, close_window, NULL);
 	mlx_loop(mlx);	
 }
