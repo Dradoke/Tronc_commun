@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   bit_shifting.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/29 10:53:02 by ngaudoui         ###   ########.fr       */
+/*   Created: 2025/01/29 07:20:13 by ngaudoui          #+#    #+#             */
+/*   Updated: 2025/01/29 07:20:33 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include "../minilibx/mlx.h"
-# include "../minilibx/mlx_int.h"
-# include "bit_shifting.h"
-# include "color_utils.h"
-# include <sys/time.h>
+int	create_trgb(int t, int r, int g, int b);
+int	get_t(int trgb);
+int	get_r(int trgb);
+int	get_g(int trgb);
+int	get_b(int trgb);

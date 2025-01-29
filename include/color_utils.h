@@ -1,18 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   color_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/29 10:53:02 by ngaudoui         ###   ########.fr       */
+/*   Created: 2025/01/29 07:43:48 by ngaudoui          #+#    #+#             */
+/*   Updated: 2025/01/29 07:51:39 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include "../minilibx/mlx.h"
-# include "../minilibx/mlx_int.h"
-# include "bit_shifting.h"
-# include "color_utils.h"
-# include <sys/time.h>
+int add_shade(double distance, int color);
+int get_oposite(int color);
