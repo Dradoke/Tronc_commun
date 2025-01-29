@@ -6,14 +6,14 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/29 11:37:47 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:41:23 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../include/fdf.h"
 
-#define ESC = 65307
+#define ESC 65307
 #define A 97
 
 typedef struct	s_data {
@@ -60,7 +60,7 @@ int	handle_visibility_event(int visibility, void *param)
 	return (0);
 }
 
-int	key_press(int keycode, t_vars *vars, void *param)
+int	key_press(int keycode, t_vars *vars)
 {
 	if (keycode == ESC)
 	{
@@ -68,7 +68,7 @@ int	key_press(int keycode, t_vars *vars, void *param)
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
 	if (keycode == 32)
-		printf("%i", gettimeofday(&param, NULL));
+		printf("Space");
 	return (0);
 }
 long long	time_between(t_timeval start, t_timeval end)
@@ -97,8 +97,8 @@ int main(void)
 
 	
 	mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, 1920, 1080, "Test");
-	mlx_hook(mlx_win, 2,1L << 0, key_press, &timestart);
+    mlx_win = mlx_new_window(mlx, 500, 500, "Test");
+	mlx_hook(mlx_win, 2,1L << 0, key_press, NULL);
 	mlx_hook(mlx_win,17,1L<<17, close_window, NULL);
 	mlx_loop(mlx);	
 }
