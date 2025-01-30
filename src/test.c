@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/30 10:03:18 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:06:21 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../include/fdf.h"
 
 #define ESC 65307
-#define A 97
+#define SPACE 32
 
 typedef struct	s_data {
 	void	*img;
@@ -59,7 +59,7 @@ long get_time_ms()
 {
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
 int	key_press(int keycode, t_vars *vars)
@@ -68,32 +68,45 @@ int	key_press(int keycode, t_vars *vars)
 	{
 		printf("end of window\n");
 		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
 	}
-	if (keycode ==32)
+	if (keycode == SPACE)
 	{
-		if (!vars->key_pressed)
+		if (vars->key_pressed == 0)
 		{
-			printf("Touche ESPACE enfoncée\n");
-			// vars->key_pressed = 1;
-			// vars->press_time = get_time_ms();
+			printf("key_pressed : %i\n", vars->key_pressed);
+			mlx_do_key_autorepeatoff(vars->mlx);
+			vars->key_pressed = 1;
+			vars->press_time = get_time_ms();
 		}
 	}
+	if (keycode ==48)
+		vars->win = mlx_new_window(vars->mlx, 500, 500, "Test");
+	return (0);
+}
+int mouse_enter_window(int x, int y, t_vars *vars)
+{
+	(void)x;
+	(void)y;
+	(void)vars;
+	printf("The mouse has enter the Window");
 	return (0);
 }
 
 int key_release(int keycode, t_vars *vars)
 {
 	long	duration;
-	if (keycode == 32)
+	if (keycode == SPACE && vars->key_pressed == 1)
 	{
-		if (vars->key_pressed)
-		{
 			duration = get_time_ms() - vars->press_time;
+			if (duration > 1500 && duration < 2500)
+				printf("duration : %li\n", duration);
 			vars->key_pressed = 0;
-			printf("duration : %li", duration);
-			// if (duration > 2)
-		}
 	}
+	// else if (keycode != 32 && vars->key_pressed == 1)
+	// {
+		
+	// }
 	return (0);
 }
 // int loop_time_hook(t_vars *vars)
@@ -103,23 +116,24 @@ int key_release(int keycode, t_vars *vars)
 // 		current_time = get_time_ms();
 // }
 
-int	close_window(void *param)
+int	close_window(t_vars *vars)
 {
-	(void)param;
+	mlx_destroy_window(vars->mlx, vars->win);
 	exit(0);
 	return(0);
 }
 
 int main(void)
 {
-	t_vars data;
+	t_vars data = {0};
 
 	// data.key_pressed = 0;
 	// data.press_time = 0;
 	data.mlx = mlx_init();
     data.win = mlx_new_window(data.mlx, 500, 500, "Test");
-	mlx_hook(data.win, 2,1L << 0, key_press, NULL);
-	mlx_hook(data.win, 3,1L << 1, key_release, NULL);
-	mlx_hook(data.win,17,1L<<17, close_window, NULL);
+	mlx_hook(data.win, 2,1L << 0, key_press, &data);
+	mlx_hook(data.win, 3,1L << 1, key_release, &data);
+	mlx_hook(data.win, 7,1L << 14, mouse_enter_window, &data);
+	mlx_hook(data.win,17,1L<<17, close_window, &data);
 	mlx_loop(data.mlx);	
 }
