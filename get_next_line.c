@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:17:27 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/21 14:54:57 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:18:21 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*read_file(int fd, char *buffer)
 		{
 			free(buff);
 			free(buffer);
-			return (NULL);
+			return (/*buff = NULL, buffer = NULL,*/ NULL);
 		}
 		buff[byte_read] = 0;
 		buffer = ft_free(buffer, buff);
@@ -90,6 +90,7 @@ char	*read_file(int fd, char *buffer)
 			break ;
 	}
 	free(buff);
+	buff = NULL;
 	return (buffer);
 }
 
