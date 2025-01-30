@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/29 13:41:23 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:03:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,16 @@ typedef struct	s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	int     key_pressed;
+    long    press_time;
 }				t_vars;
 
-typedef struct s_timeval {
+typedef struct s_timeval{
 	long	sec;
 	long	usec;
 }				t_timeval;
 
-void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-    char    *dst;
 
-    dst = data->addr + (y*data->line_length + x * (data->bits_per_pixel / 8));
-    (*(unsigned int*)dst = color);
-}
 int	handle_unmap_event(void *param)
 {
 	(void)param;
@@ -59,6 +55,12 @@ int	handle_visibility_event(int visibility, void *param)
 		printf("Th window is visible !\n");
 	return (0);
 }
+long get_time_ms()
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+}
 
 int	key_press(int keycode, t_vars *vars)
 {
@@ -67,19 +69,39 @@ int	key_press(int keycode, t_vars *vars)
 		printf("end of window\n");
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
-	if (keycode == 32)
-		printf("Space");
+	if (keycode ==32)
+	{
+		if (!vars->key_pressed)
+		{
+			printf("Touche ESPACE enfoncée\n");
+			// vars->key_pressed = 1;
+			// vars->press_time = get_time_ms();
+		}
+	}
 	return (0);
 }
-long long	time_between(t_timeval start, t_timeval end)
+
+int key_release(int keycode, t_vars *vars)
 {
-	long long	start_ms;
-	long long	end_ms;
-	
-	start_ms = start.sec * 1000LL + start.usec / 1000;
-	end_ms = end.sec * 1000LL + end.usec / 1000;
-	return (end_ms - start_ms);
+	long	duration;
+	if (keycode == 32)
+	{
+		if (vars->key_pressed)
+		{
+			duration = get_time_ms() - vars->press_time;
+			vars->key_pressed = 0;
+			printf("duration : %li", duration);
+			// if (duration > 2)
+		}
+	}
+	return (0);
 }
+// int loop_time_hook(t_vars *vars)
+// {
+// 	long current_time;
+// 	if (vars->key_pressed)
+// 		current_time = get_time_ms();
+// }
 
 int	close_window(void *param)
 {
@@ -90,15 +112,14 @@ int	close_window(void *param)
 
 int main(void)
 {
-    void    *mlx;
-    void    *mlx_win;
-	t_timeval timestart;
-	t_timeval timeend;
+	t_vars data;
 
-	
-	mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, 500, 500, "Test");
-	mlx_hook(mlx_win, 2,1L << 0, key_press, NULL);
-	mlx_hook(mlx_win,17,1L<<17, close_window, NULL);
-	mlx_loop(mlx);	
+	// data.key_pressed = 0;
+	// data.press_time = 0;
+	data.mlx = mlx_init();
+    data.win = mlx_new_window(data.mlx, 500, 500, "Test");
+	mlx_hook(data.win, 2,1L << 0, key_press, NULL);
+	mlx_hook(data.win, 3,1L << 1, key_release, NULL);
+	mlx_hook(data.win,17,1L<<17, close_window, NULL);
+	mlx_loop(data.mlx);	
 }
