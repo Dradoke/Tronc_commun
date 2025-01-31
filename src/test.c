@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/31 14:18:08 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:23:51 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ typedef struct s_timeval{
 	long	usec;
 }				t_timeval;
 
+
+int	close_window(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_do_key_autorepeaton(vars->mlx);
+	exit(0);
+	return(0);
+}
 
 int	handle_unmap_event(void *param)
 {
@@ -67,7 +75,7 @@ int	key_press(int keycode, t_vars *vars)
 	if (keycode == ESC)
 	{
 		printf("end of window\n");
-		mlx_destroy_window(vars->mlx, vars->win);
+		close_window(vars);
 		exit(0);
 	}
 	if (keycode == SPACE)
@@ -116,12 +124,7 @@ int key_release(int keycode, t_vars *vars)
 // 		current_time = get_time_ms();
 // }
 
-int	close_window(t_vars *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
-	return(0);
-}
+
 
 int main(void)
 {
