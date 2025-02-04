@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/31 14:23:51 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:00:14 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 typedef struct	s_data {
 	void	*img;
+	int		img_height;
+	int		img_width;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -27,6 +29,9 @@ typedef struct	s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	void	*img;
+	int		win_width;
+	int		win_height;
 	int     key_pressed;
     long    press_time;
 }				t_vars;
@@ -39,10 +44,18 @@ typedef struct s_timeval{
 
 int	close_window(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
 	mlx_do_key_autorepeaton(vars->mlx);
 	exit(0);
 	return(0);
+}
+int mouse_move(int x, int y)
+{
+    if (x >= 0 && x < 500 && y >= 0 && y < 500)
+        printf("Mouse inside window: (%d, %d)\n", x, y);
+    if (x < 0 && x > 500 && y < 0 && y > 500)
+        printf("Mouse outside window\n");
+    return (0);
 }
 
 int	handle_unmap_event(void *param)
@@ -92,14 +105,6 @@ int	key_press(int keycode, t_vars *vars)
 		vars->win = mlx_new_window(vars->mlx, 500, 500, "Test");
 	return (0);
 }
-int mouse_enter_window(int x, int y, t_vars *vars)
-{
-	(void)x;
-	(void)y;
-	(void)vars;
-	printf("The mouse has enter the Window");
-	return (0);
-}
 
 int key_release(int keycode, t_vars *vars)
 {
@@ -129,14 +134,18 @@ int key_release(int keycode, t_vars *vars)
 int main(void)
 {
 	t_vars data = {0};
-
-	// data.key_pressed = 0;
-	// data.press_time = 0;
+	char	*relative_path = "./test.xpm";
+	
+	data.win_height = 500;
+	data.win_width = 500;
 	data.mlx = mlx_init();
-    data.win = mlx_new_window(data.mlx, 500, 500, "Test");
+    data.win = mlx_new_window(data.mlx, data.win_width, data.win_height, "Test");
+	data.img = mlx_new_image(data.mlx, data.win_width, data.win_height);
+	mlx_xpm_file_to_image(data.mlx, relative_path, &data.win_width, &data.win_height);
+	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
 	mlx_hook(data.win, 2,1L << 0, key_press, &data);
 	mlx_hook(data.win, 3,1L << 1, key_release, &data);
-	mlx_hook(data.win, 7,1L << 14, mouse_enter_window, &data);
-	mlx_hook(data.win,17,1L<<17, close_window, &data);
+	mlx_hook(data.win, 6, 1L << 6, mouse_move, NULL);
+	mlx_hook(data.win,17,1L << 17, close_window, &data);
 	mlx_loop(data.mlx);	
 }
