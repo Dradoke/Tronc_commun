@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/04 12:00:14 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:27:46 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	close_window(t_vars *vars)
 	mlx_destroy_display(vars->mlx);
 	mlx_do_key_autorepeaton(vars->mlx);
 	exit(0);
+	free(vars);
 	return(0);
 }
 int mouse_move(int x, int y)
@@ -148,4 +149,5 @@ int main(void)
 	mlx_hook(data.win, 6, 1L << 6, mouse_move, NULL);
 	mlx_hook(data.win,17,1L << 17, close_window, &data);
 	mlx_loop(data.mlx);	
+	return (0);
 }
