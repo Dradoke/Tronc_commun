@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/06 12:47:30 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:59:40 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	key_press(int keysym, t_vars *vars)
 		close_window(vars);
 		exit(0);
 	}
-	if (keysym == XK_r)
+	 if (keysym == XK_r)
 	{
 		color_screen(vars, 0xff0000);
 	}
