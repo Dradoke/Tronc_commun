@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/06 15:59:40 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:33:47 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void my_pixel_put(t_image *image, int x, int y, int color)
 	*((unsigned int *)(offset + image->image_pixel_ptr)) = color;
 }
 
-void color_screen(t_vars *vars, unsigned int color)
+void color_screen(t_vars *vars, int color)
 {
 	int y;
 	int x;
@@ -77,7 +77,7 @@ int	key_press(int keysym, t_vars *vars)
 		close_window(vars);
 		exit(0);
 	}
-	 if (keysym == XK_r)
+	if (keysym == XK_r)
 	{
 		color_screen(vars, 0xff0000);
 	}

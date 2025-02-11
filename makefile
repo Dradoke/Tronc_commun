@@ -4,7 +4,7 @@ NAME = fdf
 CC = gcc
 # Compilation options 
 # !!!!! RAJOUTER WERROR !!!!!
-CFLAGS = -Wall -Wextra -Iinclude/ -Iminilibx/
+CFLAGS = -Wall -Wextra -Iinclude/ -Iminilibx/ -g
 #-lft	# Link options for libs
 LDFLAGS = -Llib -Lminilibx -lmlx_Linux -lm -lXext -lX11 -lz
 # sources directory
