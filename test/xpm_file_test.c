@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   xpm_file_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/08 17:53:50 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:33:22 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void my_pixel_put(t_image *image, int x, int y, int color)
 
 void color_screen(t_vars *vars, char *file)
 {
-
+	if (vars->image.image_ptr)
 		mlx_destroy_image(vars->mlx,vars->image.image_ptr);
+	mlx_clear_window(vars->mlx, vars->win);
 	vars->image.image_ptr = mlx_xpm_file_to_image(vars->mlx, file, &vars->img_width, &vars->img_height);
 	if (vars->image.image_ptr)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->image.image_ptr, 0, 0);
