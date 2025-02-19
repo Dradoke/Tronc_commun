@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/06 12:33:47 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:04:04 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 
 #define WIN_LEN 800
 
-typedef struct	s_image {
-	void	*image_ptr;
-	char	*image_pixel_ptr;
-	int		bits_per_pixel;
-	int		line_len;
-	int		endian;
-}				t_image;
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -97,7 +90,13 @@ int	key_press(int keysym, t_vars *vars)
 int main(void)
 {
 	t_vars data;
-	
+	t_line line;
+
+	line.color = 0x00FF0000;
+	line.x0 = 1;
+	line.y0 = 1;
+	line.x1 = 200;
+	line.y1 = 162;
 	data.mlx = mlx_init();
     data.win = mlx_new_window(data.mlx, WIN_LEN, WIN_LEN, "Test");
 
@@ -105,6 +104,8 @@ int main(void)
 	data.image.image_ptr = mlx_new_image(data.mlx, WIN_LEN, WIN_LEN);
 	data.image.image_pixel_ptr = mlx_get_data_addr(data.image.image_ptr, &data.image.bits_per_pixel, &data.image.line_len, &data.image.endian);
 	
+	draw_line(line, &data.image);
+	mlx_put_image_to_window(data.mlx, data.win, data.image.image_ptr, 0, 0);
 	mlx_key_hook(data.win, key_press, &data);
 	mlx_hook(data.win,17,1L << 17, close_window, &data);
 	mlx_loop(data.mlx);	
