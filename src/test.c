@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/19 16:04:04 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:44:56 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ int main(void)
 	t_line line;
 
 	line.color = 0x00FF0000;
-	line.x0 = 1;
-	line.y0 = 1;
-	line.x1 = 200;
-	line.y1 = 162;
+	line.x0 = 0;
+	line.y0 = 0;
+	line.x1 = 100;
+	line.y1 = 2;
 	data.mlx = mlx_init();
     data.win = mlx_new_window(data.mlx, WIN_LEN, WIN_LEN, "Test");
 

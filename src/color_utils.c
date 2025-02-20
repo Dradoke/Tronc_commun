@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/29 07:50:58 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:49:24 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,11 @@ int get_oposite(int color)
 	g = get_g(color);
 	b = get_b(color);
 	return (create_trgb(t,b,r,g));
+}
+unsigned int blend_color(unsigned int bg, unsigned int fg, float alpha)
+{
+    unsigned char r = ((bg >> 16) & 0xFF) * (1 - alpha) + ((fg >> 16) & 0xFF) * alpha;
+    unsigned char g = ((bg >> 8) & 0xFF) * (1 - alpha) + ((fg >> 8) & 0xFF) * alpha;
+    unsigned char b = (bg & 0xFF) * (1 - alpha) + (fg & 0xFF) * alpha;
+    return (r << 16) | (g << 8) | b;
 }
