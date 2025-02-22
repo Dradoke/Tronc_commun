@@ -6,11 +6,11 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:16:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/01/31 14:19:01 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:26:38 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// int	create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
+// int	create_trgb(char t, char r, char g, char b)
 // {
 // 	return (*(int *)(unsigned char [4]){b, g, r, t});
 // }

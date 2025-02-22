@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/21 19:50:00 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:29:40 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ typedef struct s_new_line {
 	int ix;
 	int iy;
 	int	i;
-	int osh;
+	int ost;
 	int osb;
 }				t_n_l;
 
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+	t_image	img;
+}				t_vars;
 
 void my_px_p(t_image *img, int x, int y, int color);
 unsigned int bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb);
@@ -56,3 +61,4 @@ unsigned int bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb);
 void make_line(t_line_pts line, t_image *img);
 int my_abs(int a);
 t_line_pts change_points(t_line_pts line_pts);
+int	calc_offset(t_image *img, t_n_l line, char hb);

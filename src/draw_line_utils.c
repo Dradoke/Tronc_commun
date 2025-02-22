@@ -6,21 +6,22 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/21 19:09:05 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:13:01 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int my_abs(int a)
+int	my_abs(int a)
 {
 	if (a < 0)
-		return(a*=-1);
-	return(a);
+		return (a *= -1);
+	return (a);
 }
-t_line_pts change_points(t_line_pts line_pts)
+
+t_line_pts	change_points(t_line_pts line_pts)
 {
-	int tempo;
+	int	tempo;
 
 	tempo = line_pts.x0;
 	line_pts.x0 = line_pts.x1;
@@ -28,5 +29,12 @@ t_line_pts change_points(t_line_pts line_pts)
 	tempo = line_pts.y0;
 	line_pts.y0 = line_pts.y1;
 	line_pts.y1 = tempo;
-	return(line_pts);
+	return (line_pts);
+}
+
+int	calc_offset(t_image *img, t_n_l line, char hb)
+{
+	if (hb != 't')
+		return ((img->line_len * line.iy) + (line.ix * (img->bits_pp / 8)));
+	return ((img->line_len * line.iy) + ((line.ix + 1) * (img->bits_pp / 8)));
 }
