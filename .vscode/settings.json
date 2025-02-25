@@ -2,6 +2,7 @@
 	"files.associations": {
 		"keysym.h": "c",
 		"keysymdef.h": "c",
-		"random": "c"
+		"random": "c",
+		"ios": "c"
 	}
 }

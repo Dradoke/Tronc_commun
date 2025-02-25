@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/22 14:33:04 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:07:13 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	color_screen(t_vars *vars, int color)
 
 	y = 0;
 	x = 0;
-	while (y < WIN_LEN)
+	while (y < WIN_HEIGHT)
 	{
-		while (x < WIN_LEN)
+		while (x < WIN_WIDTH)
 		{
 			my_px_p(&vars->img, x, y, color);
 			x++;
@@ -75,24 +75,31 @@ int	key_press(int keysym, t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img_ptr, 0, 0);
 	return (0);
 }
+void draw_text(t_vars *data)
+{
+    mlx_string_put(data->mlx, data->win, (WIN_WIDTH /2 - strlen("Bonjo")* 2.75), WIN_HEIGHT /2, 0x0000FF00, "Bonjo");
+}
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_vars		data;
 	t_line_pts	line;
 
-	line.color = 0x00FF0000;
-	line.x0 = 300;
-	line.y0 = 300;
-	line.x1 = 0;
-	line.y1 = 0;
+	if (argc < 5)
+	    return (1);
+	line.start.color = 0x00FF0000;
+	line.end.color = 0x00FF0000;
+	line.start.x = atoi(argv[1]);
+	line.start.y = atoi(argv[2]);
+	line.end.x = atoi(argv[3]);
+	line.end.y = atoi(argv[4]);
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, WIN_LEN, WIN_LEN, "Test");
-	data.img.img_ptr = mlx_new_image(data.mlx, WIN_LEN, WIN_LEN);
+	data.win = mlx_new_window(data.mlx, WIN_WIDTH, WIN_HEIGHT, "Test");
+	data.img.img_ptr = mlx_new_image(data.mlx, WIN_WIDTH, WIN_HEIGHT);
 	data.img.px_ptr = mlx_get_data_addr(data.img.img_ptr, &data.img.bits_pp,
 			&data.img.line_len, &data.img.endian);
+	// mlx_loop_hook(data.mlx, (void *)draw_text, &data);
 	make_line(line, &data.img);
-	mlx_put_image_to_window(data.mlx, data.win, data.img.img_ptr, 0, 0);
 	mlx_key_hook(data.win, key_press, &data);
 	mlx_hook(data.win, 17, 1L << 17, close_window, &data);
 	mlx_loop(data.mlx);
