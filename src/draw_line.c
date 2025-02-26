@@ -6,13 +6,13 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/25 17:59:25 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:03:31 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	draw_horizontal_line(t_n_l line, t_line_pts line_pts, t_image *img)
+void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 {
 	unsigned int	color;
 
@@ -40,7 +40,7 @@ void	draw_horizontal_line(t_n_l line, t_line_pts line_pts, t_image *img)
 	my_px_p(img, line_pts.start.x, line_pts.start.y, line_pts.start.color);
 }
 
-void	draw_vertical_line(t_n_l line, t_line_pts line_pts, t_image *img)
+void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 {
 	unsigned int	color;
 
