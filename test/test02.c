@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/28 19:27:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:04:19 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,6 @@ int	main(int argc, char **argv)
 {
 	t_vars		data;
 	t_line_pts	line;
-	t_points	**map;
-	int	x;
-	int	y;
 
 	if (argc < 5)
 	    return (1);
@@ -103,17 +100,6 @@ int	main(int argc, char **argv)
 			&data.img.line_len, &data.img.endian);
 	// mlx_loop_hook(data.mlx, (void *)draw_text, &data);
 	make_line(line, &data.img);
-	map = allocate_map(WIN_WIDTH, WIN_HEIGHT);
-	while (map[x] < WIN_HEIGHT)
-	{
-		while (map[x][y])
-		{
-			/* code */
-		}
-		
-		map[x][y]
-	}
-	
 	mlx_key_hook(data.win, key_press, &data);
 	mlx_hook(data.win, 17, 1L << 17, close_window, &data);
 	mlx_loop(data.mlx);

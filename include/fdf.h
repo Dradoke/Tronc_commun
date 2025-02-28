@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/26 02:03:06 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:19:06 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,6 @@ void make_line(t_line_pts line, t_image *img);
 int	my_abs(t_line_pts line_pts, char xy);
 t_line_pts change_points(t_line_pts line_pts);
 int	calc_offset(t_image *img, t_n_l line, char hb);
+
+/*-----DRAW_LINE-----*/
+t_points **allocate_map(int width, int height);

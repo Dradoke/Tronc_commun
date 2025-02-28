@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/28 00:46:37 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:24:20 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_points **allocate_map(int width, int height)
     t_points **map;
     int x;
 
+    x = 0;
     map = malloc(sizeof(t_points *) * width);
     if (!map)
         return (NULL);
@@ -49,15 +50,18 @@ t_points **allocate_map(int width, int height)
             free(map);
             return(NULL);
         }
+        x++;
     }
     return (map);
 }
+
 void free_map(t_points **map, int width)
 {
     for (int x = 0; x < width; x++)
         free(map[x]);
     free(map);
 }
+
 void fill_map(t_points **map, char **lines, int width, int height)
 {
     int x, y;

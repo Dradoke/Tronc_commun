@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/25 17:48:29 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:08:46 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_oposite(int color)
 	return (create_trgb(t, b, r, g));
 }
 
-unsigned int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
+int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
 {
 	unsigned int	bg[2];
 	unsigned char	r;

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/26 02:03:31 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:09:36 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	make_line(t_line_pts line_pts, t_image *img)
 	{
 		if (line_pts.end.x < line_pts.start.x)
 			line_pts = change_points(line_pts);
-		draw_horizontal_line(line, line_pts, img);
+		draw_hori_line(line, line_pts, img);
 	}
 	else
 	{
 		if (line_pts.end.y < line_pts.start.y)
 			line_pts = change_points(line_pts);
-		draw_vertical_line(line, line_pts, img);
+		draw_vert_line(line, line_pts, img);
 	}
 }
