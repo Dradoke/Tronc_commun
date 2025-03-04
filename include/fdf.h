@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/28 19:19:06 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:38:59 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,14 @@ int	calc_offset(t_image *img, t_n_l line, char hb);
 
 /*-----DRAW_LINE-----*/
 t_points **allocate_map(int width, int height);
+void fill_map(t_points **map, char **lines, int width, int height);
+void print_map(t_points **map, int width, int height);
+void free_map(t_points **map, int width);
+
+char	**ft_split(const char *s, char c);
+void	*ft_calloc(size_t nelem, size_t elsize);
+void	ft_bzero(void *s, size_t n);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);

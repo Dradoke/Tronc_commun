@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/28 19:24:20 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:54:40 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,21 @@ void fill_map(t_points **map, char **lines, int width, int height)
             map[x][y] = (t_points){x, y, atoi(split_line[x]), 0xFFFFFF}; // Blanc par défaut
         }
         free(split_line);
+        split_line = NULL;
+    }
+}
+void print_map(t_points **map, int width, int height)
+{
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            printf("(%d, %d, %d, %#X) ", 
+                   map[y][x].x, 
+                   map[y][x].y, 
+                   map[y][x].z, 
+                   map[y][x].color);
+        }
+        printf("\n"); // Nouvelle ligne après chaque ligne de la map
     }
 }
