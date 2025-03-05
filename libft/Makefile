@@ -2,7 +2,7 @@
 NAME = libft.a
 
 # Options de compilations
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Ignl/
 
 # Liste des fichiers sources
 FILES = ft_isalpha.c \
