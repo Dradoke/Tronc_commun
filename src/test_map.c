@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/04 11:59:02 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:38:06 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,6 @@
 #include <unistd.h> // Pour read, close
 #define BUFFER_SIZE 1
 
-ssize_t ft_getline(char **line, int fd)
-{
-    char buffer[BUFFER_SIZE + 1];
-    char *tmp;
-    int ret, len = 0;
-
-    if (!line || fd < 0)
-        return -1;
-
-    *line = malloc(1);
-    if (!*line)
-        return -1;
-    (*line)[0] = '\0';
-
-    while ((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
-    {
-        buffer[ret] = '\0'; // Ajouter le null-terminateur
-
-        // Étendre `line` dynamiquement pour ajouter `buffer`
-        tmp = malloc(len + ret + 1);
-        if (!tmp)
-            return -1;
-
-        for (int i = 0; i < len; i++)
-            tmp[i] = (*line)[i];
-        for (int i = 0; i < ret; i++)
-            tmp[len + i] = buffer[i];
-
-        tmp[len + ret] = '\0';
-        free(*line);
-        *line = tmp;
-        len += ret;
-
-        // Arrêter si on atteint un saut de ligne
-        if ((*line)[len - 1] == '\n')
-            break;
-    }
-
-    return (ret == 0 && len == 0) ? -1 : len;
-}
 
 // Fonction pour compter les colonnes d'une ligne
 int count_columns(char *line)
