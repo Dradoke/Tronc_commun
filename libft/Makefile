@@ -5,7 +5,7 @@ NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror -Ignl/
 
 # Liste des fichiers sources
-FILES = ft_isalpha.c \
+SRCS = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
 	ft_isascii.c \
@@ -38,31 +38,35 @@ FILES = ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c 
-# ./gnl/get_next_line.c 
-# ./gnl/get_next_line.utils.c
+	ft_putnbr_fd.c \
+	gnl/get_next_line.c \
+	gnl/get_next_line_utils.c
 # Liste des fichiers sources BONUS
-# BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+# BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 # 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 # 		ft_lstmap.c
-# Liste des fichiers Objets creer a partir de 'FILES' (Fichiers sources)
-OBJ = $(FILES:.c=.o)
-# Liste des fichiers Objets BONUS creer a partir de 'BONUS_FILES' (Fichiers sources)
-# BONUS_OBJ = $(BONUS_FILES:.c=.o)
+# Liste des fichiers Objets creer a partir de 'SRCS' (Fichiers sources)
+OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
+
+OBJ_DIR = obj/
+# Liste des fichiers Objets BONUS creer a partir de 'BONUS_SRCS' (Fichiers sources)
+# BONUS_OBJ = $(BONUS_SRCS:.c=.o)
 
 # Commande pour supprimer des fichiers avec option -f (pas d'erreur)
 RM = rm -f
 
 all: $(NAME)
 
-$(NAME) : $(OBJ)
-	@ar rcs $@ $(OBJ)
+$(NAME) : $(OBJS) test/test.a
+	@ar rcs $@ $(OBJS)
+	@ar x test/test.a
+	@ar rcs $(NAME) *.o
+	@rm -f *.o
 	@echo "$(NAME) created"
-	ranlib $@
-	@echo "$(NAME) indexed"
 
-$(OBJ):		$(FILES)
-	@gcc -c $(CFLAGS) $(FILES)
+$(OBJ_DIR)%.o: %.c
+	@mkdir -p $(dir $@)
+	@gcc -c $(CFLAGS) $< -o $@
 
 # bonus:		$(BONUS_FILES)
 # 	@gcc -c $(FLAG) $(BONUS_FILES)
@@ -70,7 +74,7 @@ $(OBJ):		$(FILES)
 # 	@ranlib $(NAME)
 
 clean:
-	@$(RM) $(OBJ) 
+	@$(RM) -rf $(OBJ_DIR)
 # $(BONUS_OBJ)
 	@echo "OBJ deleted"
 
@@ -80,4 +84,4 @@ fclean:		clean
 
 re:	fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
