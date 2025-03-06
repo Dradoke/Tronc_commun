@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:06:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/05 15:06:03 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:55:31 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*make_line(char *buf, int fd, char **buff);
 
 int		linelen(char *str, int *nl);
 void	cpybuf(char *line, char *buf, size_t *li);
-char	*ft_calloc(size_t size);
+char	*ft_calloc_char(size_t size);
 char	*ft_realloc(char *s1, size_t size);
 
 #endif

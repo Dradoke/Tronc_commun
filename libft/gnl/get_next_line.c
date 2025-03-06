@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:05:27 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/05 15:05:29 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:56:01 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (!bufs[fd])
-		bufs[fd] = ft_calloc(BUFFER_SIZE + 1);
+		bufs[fd] = ft_calloc_char(BUFFER_SIZE + 1);
 	if (bufs[fd])
 		return (make_line(bufs[fd], fd, &(bufs[fd])));
 	return (NULL);

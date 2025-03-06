@@ -6,13 +6,13 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 15:06:36 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/05 15:06:38 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:56:11 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_calloc(size_t size)
+char	*ft_calloc_char(size_t size)
 {
 	char	*new;
 	size_t	i;
@@ -33,8 +33,8 @@ char	*ft_realloc(char *s1, size_t size)
 
 	i = 0;
 	if (!s1)
-		return (ft_calloc(size));
-	s2 = ft_calloc(size);
+		return (ft_calloc_char(size));
+	s2 = ft_calloc_char(size);
 	if (!s2)
 		return (free(s1), NULL);
 	while (s1[i] && i < size - 1)

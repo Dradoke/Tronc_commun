@@ -47,21 +47,28 @@ SRCS = ft_isalpha.c \
 # 		ft_lstmap.c
 # Liste des fichiers Objets creer a partir de 'SRCS' (Fichiers sources)
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
+PRINTF_OBJS = $(shell find $(PRINTF_DIR) -name '*.o')
 
 OBJ_DIR = obj/
+PRINTF_DIR = printf/
+PRINTF_LIB = $(PRINTF_DIR)libftprintf.a
 # Liste des fichiers Objets BONUS creer a partir de 'BONUS_SRCS' (Fichiers sources)
 # BONUS_OBJ = $(BONUS_SRCS:.c=.o)
 
 # Commande pour supprimer des fichiers avec option -f (pas d'erreur)
 RM = rm -f
 
-all: $(NAME)
+all: $(PRINTF_LIB) $(NAME)
 
-$(NAME) : $(OBJS) test/test.a
-	@ar rcs $@ $(OBJS)
-	@ar x test/test.a
-	@ar rcs $(NAME) *.o
-	@rm -f *.o
+$(PRINTF_LIB):
+	@make -C $(PRINTF_DIR)
+
+# test/test.a
+$(NAME) : $(OBJS) $(PRINTF_LIB)
+	@ar rcs $@ $(OBJS) $(PRINTF_OBJS)
+#	@ar x test/test.a
+#	@ar rcs $(NAME) *.o
+#	@rm -f *.o
 	@echo "$(NAME) created"
 
 $(OBJ_DIR)%.o: %.c
@@ -72,14 +79,18 @@ $(OBJ_DIR)%.o: %.c
 # 	@gcc -c $(FLAG) $(BONUS_FILES)
 # 	@ar rcs $(NAME) $(BONUS_OBJ)
 # 	@ranlib $(NAME)
+printf:
+	@make -C printf
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
+	@make -C $(PRINTF_DIR) clean
 # $(BONUS_OBJ)
 	@echo "OBJ deleted"
 
 fclean:		clean
 	@$(RM) $(NAME)
+	@make -C $(PRINTF_DIR) fclean
 	@echo "$(NAME) deleted"
 
 re:	fclean all

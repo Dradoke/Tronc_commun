@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:56:44 by mavander          #+#    #+#             */
-/*   Updated: 2024/11/14 14:22:01 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 13:51:04 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "./gnl/get_next_line.h"
+# include "./printf/ft_printf.h"
 // ORIGINAL FUNCTIONS
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
