@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test02.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/26 02:04:19 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:53:13 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ int	close_window(t_vars *vars)
 	return (0);
 }
 
-void	my_px_p(t_image *img, int x, int y, int color)
-{
-	int	offset;
 
-	offset = (img->line_len * y) + (x * (img->bits_pp / 8));
-	*((unsigned int *)(offset + img->px_ptr)) = color;
-}
 
 void	color_screen(t_vars *vars, int color)
 {
@@ -99,7 +93,7 @@ int	main(int argc, char **argv)
 	data.img.px_ptr = mlx_get_data_addr(data.img.img_ptr, &data.img.bits_pp,
 			&data.img.line_len, &data.img.endian);
 	// mlx_loop_hook(data.mlx, (void *)draw_text, &data);
-	make_line(line, &data.img);
+	fdf_make_line(line, &data.img);
 	mlx_key_hook(data.win, key_press, &data);
 	mlx_hook(data.win, 17, 1L << 17, close_window, &data);
 	mlx_loop(data.mlx);

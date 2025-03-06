@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/25 17:58:39 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:53:21 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,11 @@ int	calc_offset(t_image *img, t_n_l line, char hb)
 	if (hb != 't')
 		return ((img->line_len * line.iy) + (line.ix * (img->bits_pp / 8)));
 	return ((img->line_len * line.iy) + ((line.ix + 1) * (img->bits_pp / 8)));
+}
+void	my_px_p(t_image *img, int x, int y, int color)
+{
+	int	offset;
+
+	offset = (img->line_len * y) + (x * (img->bits_pp / 8));
+	*((unsigned int *)(offset + img->px_ptr)) = color;
 }

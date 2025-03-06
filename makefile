@@ -6,57 +6,65 @@
 #    By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/02/11 14:41:05 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/03/06 15:43:51 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 NAME = fdf
-# Compilateur
 CC = gcc
-# Compilation options 
-# !!!!! RAJOUTER WERROR !!!!!
-CFLAGS = -Wall -Wextra -Iinclude/ -Iminilibx/ -g
-#-lft	# Link options for libs
-LDFLAGS = -Llib -Lminilibx -lmlx_Linux -lm -lXext -lX11 -lz
-# sources directory
+CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Iminilibx/ -Ilib/libft-g
+LDFLAGS = -Llib/libft -Lminilibx -lmlx_Linux -lm -lXext -lX11 -lz -lft
+
+# Dossiers
 SRC = src/
-# objects directory
 OBJ = obj/
-# Bin directory
 BIN = bin/
-# Libs directory
-LIB = lib
+LIB = lib/
+LIBFT_DIR = $(LIB)libft/
 MINILIBX = minilibx/
 
-# Sources files
+# Repository Libft
+LIBFT_REPO = git@github.com:Dradoke/libft.git
+
+# Fichiers sources et objets
 SRCS = $(wildcard $(SRC)*.c)
 OBJS = $(patsubst $(SRC)%.c, $(OBJ)%.o, $(SRCS))
 
 # Default target
-all: $(BIN)$(NAME)
+all: clone_libft $(LIBFT_DIR)libft.a $(BIN)$(NAME)
 
-# Executable target
-$(BIN)$(NAME): $(OBJS) #$(LIB)/libft.a
+# Cloner Libft dans lib/ s'il n'existe pas
+clone_libft:
+	@if [ ! -d "$(LIBFT_DIR)" ]; then \
+		echo "Cloning libft into lib/..."; \
+		mkdir -p $(LIB); \
+		git clone $(LIBFT_REPO) $(LIBFT_DIR); \
+	fi
+
+# Compiler Libft
+$(LIBFT_DIR)libft.a:
+	@$(MAKE) -C $(LIBFT_DIR)
+
+# Compiler FDF
+$(BIN)$(NAME): $(OBJS) $(LIBFT_DIR)libft.a
 	@mkdir -p $(BIN)
 	$(CC) $(OBJS) $(LDFLAGS) -o $@
 
-# Compiling rules for .c files to .o files
+# Compilation des fichiers .c en .o
 $(OBJ)%.o: $(SRC)%.c
 	@mkdir -p $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-#$(LIB)/libft.a:
-
-# Delete obj, bin and lib directories
+# Nettoyage des fichiers objets et libft
 clean:
 	rm -rf $(OBJ) $(LIB)
 
-# Delete bin directory
+# Nettoyage complet (supprime aussi l’exécutable)
 fclean: clean
 	rm -rf $(BIN)
 
 # Rebuild from zero
-re: clean $(BIN)$(NAME)
+re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re clone_libft

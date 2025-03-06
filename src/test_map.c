@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/05 14:38:06 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:01:11 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #include <fcntl.h>  // Pour open
 #include <unistd.h> // Pour read, close
-#define BUFFER_SIZE 1
-
 
 // Fonction pour compter les colonnes d'une ligne
 int count_columns(char *line)
@@ -63,25 +61,23 @@ char **read_map_file(const char *filename, int *width, int *height)
 // Fonction principale
 int main(int argc, char **argv)
 {
-    if (argc != 2)
-    {
-        printf("Usage: %s <fichier_map.fdf>\n", argv[0]);
-        return 1;
-    }
+    // if (argc != 2)
+    // {
+    //     printf("Usage: %s <fichier_map.fdf>\n", argv[0]);
+    //     return 1;
+    // }
+    (void)argc;
+    int width = ft_atoi(argv[1]);  // Largeur de la map
+    int height = ft_atoi(argv[2]); // Hauteur de la map
 
-    int width, height;
-    char **lines = read_map_file(argv[1], &width, &height);
-    if (!lines)
-        return 1;
+    // Créer et remplir la map
+    t_points **map = create_and_fill_map(width, height);
 
-    t_points **map = allocate_map(width, height);
-    fill_map(map, lines, width, height);
+    // Afficher la map
     print_map(map, width, height);
-    
-    // Libération de la mémoire
+
+    // Libérer la mémoire
     free_map(map, height);
-    for (int i = 0; i < height; i++)
-        free(lines[i]);
-    free(lines);
+
     return 0;
 }
