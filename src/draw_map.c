@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/06 16:07:29 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:01:27 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void fill_map(t_points **map, char **lines, int width, int height)
         split_line = ft_split(lines[y], ' '); // Séparer la ligne en tokens
         for (x = 0; x < width; x++)
         {
-            map[x][y] = (t_points){x, y, atoi(split_line[x]), 0xFFFFFF}; // Blanc par défaut
+            map[y][x] = (t_points){x, y, atoi(split_line[x]), 0xFFFFFF}; // Blanc par défaut
         }
         free(split_line);
         split_line = NULL;

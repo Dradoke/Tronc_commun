@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/06 16:01:11 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:57:12 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,25 @@ char **read_map_file(const char *filename, int *width, int *height)
         perror("Erreur ouverture fichier");
         return NULL;
     }
-
-    char *line = NULL;
+    char *line;
     char **lines = NULL;
-    size_t size = 0;
-    ssize_t len;
     *height = 0;
 
-    // Lire le fichier ligne par ligne
-    while ((len = getline(&line, &size, fdopen(fd, "r"))) != -1)
+    while ((line = get_next_line(fd)) != NULL)
     {
-        if (*height == 0) *width = count_columns(line); // Déterminer la largeur
-        lines = realloc(lines, (*height + 1) * sizeof(char *));
-        lines[*height] = strdup(line);
+        if (*height == 0)
+            *width = count_columns(line); // Déterminer la largeur
+        char **temp = realloc(lines, (*height + 1) * sizeof(char *));
+        if (!temp)
+        {
+            perror("Erreur de réallocation mémoire");
+            free(line);
+            break;
+        }
+        lines = temp;
+        lines[*height] = line;
         (*height)++;
     }
-
-    free(line);
     close(fd);
     return lines;
 }
@@ -61,23 +63,26 @@ char **read_map_file(const char *filename, int *width, int *height)
 // Fonction principale
 int main(int argc, char **argv)
 {
-    // if (argc != 2)
-    // {
-    //     printf("Usage: %s <fichier_map.fdf>\n", argv[0]);
-    //     return 1;
-    // }
-    (void)argc;
-    int width = ft_atoi(argv[1]);  // Largeur de la map
-    int height = ft_atoi(argv[2]); // Hauteur de la map
+    if (argc != 2)
+    {
+        printf("Usage: %s <fichier_map.fdf>\n", argv[0]);
+        return 1;
+    }
 
-    // Créer et remplir la map
-    t_points **map = create_and_fill_map(width, height);
+    int width, height;
+    char **lines = read_map_file(argv[1], &width, &height);
+    if (!lines)
+        return 1;
 
-    // Afficher la map
+    t_points **map = allocate_map(width, height);
+    fill_map(map, lines, width, height);
     print_map(map, width, height);
-
-    // Libérer la mémoire
+    
+    // Libération de la mémoire
     free_map(map, height);
+    for (int i = 0; i < height; i++)
+        free(lines[i]);
+    free(lines);
 
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/06 16:00:19 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:23:02 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct	s_points {
 	int z;
 	int color;
 }				t_points;
+
+typedef struct	s_map {
+	t_points **tab;
+	int width;
+	int height;
+}				t_map;
 
 typedef struct	s_line_pts {
 	t_points start;
@@ -73,7 +79,8 @@ t_line_pts change_points(t_line_pts line_pts);
 int	calc_offset(t_image *img, t_n_l line, char hb);
 
 /*-----DRAW_LINE-----*/
-t_points **create_and_fill_map(int width, int height);
+t_points **allocate_map(int width, int height);
+void fill_map(t_points **map, char **lines, int width, int height);
 void print_map(t_points **map, int width, int height);
 void free_map(t_points **map, int height);
 
