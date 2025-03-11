@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/07 18:23:02 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:45:39 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_points {
 
 typedef struct	s_map {
 	t_points **tab;
+	char **lines;
 	int width;
 	int height;
 }				t_map;
@@ -78,16 +79,18 @@ int	my_abs(t_line_pts line_pts, char xy);
 t_line_pts change_points(t_line_pts line_pts);
 int	calc_offset(t_image *img, t_n_l line, char hb);
 
-/*-----DRAW_LINE-----*/
-t_points **allocate_map(int width, int height);
-void fill_map(t_points **map, char **lines, int width, int height);
-void print_map(t_points **map, int width, int height);
-void free_map(t_points **map, int height);
+/*-----FILL_MAP-----*/
+void	fill_map(t_points **map, char **lines, int width, int height);
+t_points extract_point(char *value, int x, int y);
+void free_split(char **split_line);
 
-char	**ft_split(const char *s, char c);
-void	*ft_calloc(size_t nelem, size_t elsize);
-void	ft_bzero(void *s, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+/*-----BUILD_MAP-----*/
+t_points **allocate_map(int width, int height);
+void print_map(t_points **map, int width, int height);
+void free_map(t_map *map);
+void	free_map_lines(char **lines, int height);
+char	**read_map_file(const char *filename, int *width, int *height);
+int add_line_to_map(char ***lines, char *line, int height);
+int count_columns(char *line);
+void	**ft_realloc_tab(void **ptr, size_t old_size, size_t new_size);
+t_map build_map(const char *filename);

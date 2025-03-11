@@ -3,6 +3,7 @@
 		"keysym.h": "c",
 		"keysymdef.h": "c",
 		"random": "c",
-		"ios": "c"
+		"ios": "c",
+		"fcntl.h": "c"
 	}
 }

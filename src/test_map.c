@@ -3,62 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   test_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/07 18:57:12 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:40:57 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+#include <fcntl.h>
+#include <unistd.h>
 
-#include <fcntl.h>  // Pour open
-#include <unistd.h> // Pour read, close
-
-// Fonction pour compter les colonnes d'une ligne
-int count_columns(char *line)
-{
-    int count = 0;
-    while (*line)
-    {
-        while (*line == ' ') line++; // Ignorer les espaces
-        if (*line) count++;
-        while (*line && *line != ' ') line++; // Aller au prochain espace
-    }
-    return count;
-}
-
-// Fonction pour lire le fichier et stocker chaque ligne dans un tableau de chaînes
-char **read_map_file(const char *filename, int *width, int *height)
-{
-    int fd = open(filename, O_RDONLY);
-    if (fd < 0)
-    {
-        perror("Erreur ouverture fichier");
-        return NULL;
-    }
-    char *line;
-    char **lines = NULL;
-    *height = 0;
-
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        if (*height == 0)
-            *width = count_columns(line); // Déterminer la largeur
-        char **temp = realloc(lines, (*height + 1) * sizeof(char *));
-        if (!temp)
-        {
-            perror("Erreur de réallocation mémoire");
-            free(line);
-            break;
-        }
-        lines = temp;
-        lines[*height] = line;
-        (*height)++;
-    }
-    close(fd);
-    return lines;
-}
 
 // Fonction principale
 int main(int argc, char **argv)
@@ -68,21 +23,12 @@ int main(int argc, char **argv)
         printf("Usage: %s <fichier_map.fdf>\n", argv[0]);
         return 1;
     }
-
-    int width, height;
-    char **lines = read_map_file(argv[1], &width, &height);
-    if (!lines)
-        return 1;
-
-    t_points **map = allocate_map(width, height);
-    fill_map(map, lines, width, height);
-    print_map(map, width, height);
+    t_map map;
+    map = build_map(argv[1]);
     
     // Libération de la mémoire
-    free_map(map, height);
-    for (int i = 0; i < height; i++)
-        free(lines[i]);
-    free(lines);
+    free_map(&map);
+
 
     return 0;
 }
