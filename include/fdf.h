@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/11 16:45:39 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:53:54 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ int	calc_offset(t_image *img, t_n_l line, char hb);
 void	fill_map(t_points **map, char **lines, int width, int height);
 t_points extract_point(char *value, int x, int y);
 void free_split(char **split_line);
+t_points extract_point(char *value, int x, int y);
+char *extract_color(char *value);
+char *extract_z_value(char *value);
 
 /*-----BUILD_MAP-----*/
 t_points **allocate_map(int width, int height);
