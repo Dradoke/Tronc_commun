@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/11 17:53:54 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:26:15 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ typedef struct	s_points {
 	int z;
 	int color;
 }				t_points;
+
+typedef struct s_index {
+	int ix;
+	int iy;
+}				t_index;
 
 typedef struct	s_map {
 	t_points **tab;

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/11 16:43:58 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:36:53 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_map	build_map(const char *filename)
 {
 	t_map	map;
-
 	map.lines = read_map_file(filename, &map.width, &map.height);
 	if (!map.lines)
 		return (map);
@@ -26,7 +25,7 @@ t_map	build_map(const char *filename)
 		return (map);
 	}
 	fill_map(map.tab, map.lines, map.width, map.height);
-	print_map(map.tab, map.width, map.height);
+	// print_map(map.tab, map.width, map.height);
 	return (map);
 }
 
@@ -99,22 +98,23 @@ void	free_map(t_map *map)
 // 	}
 // }
 
-void print_map(t_points **map, int width, int height)
-{
-    for (int y = 0; y < height; y++)
-    {
-        for (int x = 0; x < width; x++)
-        {
-            printf("(%d, %d, %d, %#X) ", 
-                   map[y][x].x, 
-                   map[y][x].y, 
-                   map[y][x].z, 
-                   map[y][x].color);
-            // printf("%d\t", 
-            //        map[y][x].z);
-        }
-        printf("\n");
-    }
-     printf("\nposition 7/18: %d\t\n",
-                   map[7][20].z);
-}
+// void print_map(t_points **map, int width, int height)
+// {
+//     for (int y = 0; y < height; y++)
+//     {
+//         for (int x = 0; x < width; x++)
+//         {
+//             // printf("(%d, %d, %d, %#X) ", 
+//             //        map[y][x].x, 
+//             //        map[y][x].y, 
+//             //        map[y][x].z, 
+//             //        map[y][x].color);
+//             ft_printf("(%d, %d)  ", 
+//                    map[y][x].x,
+// 				   map[y][x].y);
+//         }
+//         ft_printf("\n");
+//     }
+//      printf("\nposition 7/18: %d\t\n",
+//                    map[7][20].z);
+// }

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:59:05 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/11 16:11:46 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:01:36 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,18 @@ void	**ft_realloc_tab(void **ptr, size_t old_size, size_t new_size)
 int	count_columns(char *line)
 {
 	int	count;
+	int i;
 
+	i = 0;
 	count = 0;
-	while (*line)
+	while (line[i])
 	{
-		while (*line == ' ')
-			line++;
-		if (*line)
+		while (line[i] == ' ')
+			i++;
+		if (line[i] != ' ' && line[i] != '\n')
 			count++;
-		while (*line && *line != ' ')
-			line++;
+		while (line[i] && line[i] != ' ')
+			i++;
 	}
 	return (count);
 }

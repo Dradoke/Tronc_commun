@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:43:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/11 18:16:45 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:13:48 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@ void	fill_map(t_points **map, char **lines, int width, int height)
 {
     int		x;
     int		y;
+    t_index index;
     char	**split_line;
 
     y = 0;
+    
+    index.iy = height / 2 - height;
     while (y < height)
     {
+        index.ix = width / 2 - width;
         x = 0;
         split_line = ft_split(lines[y], ' ');
+        index.iy++;
         while (x < width)
         {
-            map[y][x] = extract_point(split_line[x], x, y);
+            map[y][x] = extract_point(split_line[x], ++index.ix, index.iy);
             x++;
         }
         free_split(split_line);
@@ -68,10 +73,7 @@ t_points extract_point(char *value, int x, int y)
         return (t_points){0, 0, 0, 0};
     }
     if (color[0] != '\0')
-	{
-		// printf("Color: %X\n", ft_atoi_base(color, "0123456789ABCDEF"));
     	point = (t_points){x, y, ft_atoi(z_value), ft_atoi_base(color, "0123456789ABCDEF")};
-	}
 	else
         point = (t_points){x, y, ft_atoi(z_value), 0xFFFFFF};
     free(z_value);
@@ -96,7 +98,6 @@ char *extract_color(char *value)
         color[j++] = value[i++];
 	}
 	color[j] = '\0';
-	printf("COLOR: %s\n", color);
     return color;
 }
 
