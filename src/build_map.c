@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/14 17:36:53 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:43:42 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ void	free_map(t_map *map)
 //             //        map[y][x].y, 
 //             //        map[y][x].z, 
 //             //        map[y][x].color);
-//             ft_printf("(%d, %d)  ", 
-//                    map[y][x].x,
-// 				   map[y][x].y);
+//             // printf("(%d, %d, %d)  ", 
+//             //        map[y][x].x,
+// 			// 	   map[y][x].y,
+// 			// 	   map[y][x].z);
+// 			printf("%d\t", map[y][x].z);
 //         }
-//         ft_printf("\n");
+//         printf("\n");
 //     }
-//      printf("\nposition 7/18: %d\t\n",
-//                    map[7][20].z);
 // }
