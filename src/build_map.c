@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 12:43:18 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:25:41 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,41 @@ void	free_map(t_map *map)
 	map->height = 0;
 }
 
-void print_map(t_points **map, int width, int height)
+void	print_map(t_points **map, int width, int height)
 {
-    for (int y = 0; y < height; y++)
-    {
-        for (int x = 0; x < width; x++)
-        {
-            // ft_printf("(%d, %d, %d, %#X) ", 
-            //        map[y][x].x, 
-            //        map[y][x].y, 
-            //        map[y][x].z, 
-            //        map[y][x].color);
-            // ft_printf("(%d, %d, %d)  ", 
-            //        map[y][x].x,
-			// 	   map[y][x].y,
-			// 	   map[y][x].z);
-			ft_printf("%d\t", map[y][x].z);
-        }
-        ft_printf("\n");
-    }
+	t_index	idx;
+
+	idx.ix = 0;
+	idx.iy = 0;
+	while (idx.iy < height)
+	{
+		while (idx.ix < width)
+		{
+			ft_printf("%d\t", map[idx.iy][idx.ix].z);
+			idx.ix++;
+		}
+		ft_printf("\n");
+		idx.ix = 0;
+		idx.iy++;
+	}
 }
+// void print_map(t_points **map, int width, int height)
+// {
+//     for (int y = 0; y < height; y++)
+//     {
+//         for (int x = 0; x < width; x++)
+//         {
+//             // ft_printf("(%d, %d, %d, %#X) ", 
+//             //        map[y][x].x, 
+//             //        map[y][x].y, 
+//             //        map[y][x].z, 
+//             //        map[y][x].color);
+//             // ft_printf("(%d, %d, %d)  ", 
+//             //        map[y][x].x,
+// 			// 	   map[y][x].y,
+// 			// 	   map[y][x].z);
+// 			ft_printf("%d\t", map[y][x].z);
+//         }
+//         ft_printf("\n");
+//     }
+// }
