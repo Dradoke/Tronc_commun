@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 11:07:09 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:43:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_map	build_map(const char *filename)
 		return (map);
 	}
 	fill_map(map.tab, map.lines, map.width, map.height);
+	print_map(map.tab, map.width, map.height);
 	return (map);
 }
 
@@ -74,23 +75,23 @@ void	free_map(t_map *map)
 	map->height = 0;
 }
 
-// void print_map(t_points **map, int width, int height)
-// {
-//     for (int y = 0; y < height; y++)
-//     {
-//         for (int x = 0; x < width; x++)
-//         {
-//             // printf("(%d, %d, %d, %#X) ", 
-//             //        map[y][x].x, 
-//             //        map[y][x].y, 
-//             //        map[y][x].z, 
-//             //        map[y][x].color);
-//             // printf("(%d, %d, %d)  ", 
-//             //        map[y][x].x,
-// 			// 	   map[y][x].y,
-// 			// 	   map[y][x].z);
-// 			printf("%d\t", map[y][x].z);
-//         }
-//         printf("\n");
-//     }
-// }
+void print_map(t_points **map, int width, int height)
+{
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            // ft_printf("(%d, %d, %d, %#X) ", 
+            //        map[y][x].x, 
+            //        map[y][x].y, 
+            //        map[y][x].z, 
+            //        map[y][x].color);
+            // ft_printf("(%d, %d, %d)  ", 
+            //        map[y][x].x,
+			// 	   map[y][x].y,
+			// 	   map[y][x].z);
+			ft_printf("%d\t", map[y][x].z);
+        }
+        ft_printf("\n");
+    }
+}
