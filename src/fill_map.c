@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:43:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 11:23:30 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:59:58 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_points	extract_point(char *value, int x, int y)
 	char		*z_value;
 	char		*color;
 
+	point.color = 0;
 	z_value = extract_z_value(value);
 	color = extract_color(value);
 	if (!z_value || !color)
@@ -69,7 +70,7 @@ char	*extract_color(char *value)
 
 	i = 0;
 	j = 0;
-	color = ft_calloc(strlen(value) + 1, sizeof(char));
+	color = ft_calloc(ft_strlen(value) + 1, sizeof(char));
 	if (!color)
 		return (NULL);
 	while (value[i] && value[i] != ',')
