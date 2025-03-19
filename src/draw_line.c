@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/06 15:49:30 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:10:13 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 	my_px_p(img, line_pts.start.x, line_pts.start.y, line_pts.start.color);
 }
 
-void	fdf_make_line(t_line_pts line_pts, t_image *img)
+void	draw_line(t_line_pts line_pts, t_image *img)
 {
 	t_n_l	line;
 

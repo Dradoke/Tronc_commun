@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/17 15:43:42 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:07:09 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_map	build_map(const char *filename)
 {
 	t_map	map;
+
 	map.lines = read_map_file(filename, &map.width, &map.height);
 	if (!map.lines)
 		return (map);
@@ -25,7 +26,6 @@ t_map	build_map(const char *filename)
 		return (map);
 	}
 	fill_map(map.tab, map.lines, map.width, map.height);
-	// print_map(map.tab, map.width, map.height);
 	return (map);
 }
 
@@ -73,30 +73,6 @@ void	free_map(t_map *map)
 	map->width = 0;
 	map->height = 0;
 }
-
-// void	fill_map(t_points **map, char **lines, int width, int height)
-// {
-// 	int		x;
-// 	int		y;
-// 	char	**split_line;
-
-// 	y = 0;
-// 	while (y < height)
-// 	{
-// 		x = 0;
-// 		split_line = ft_split(lines[y], ' ');
-// 		while (x < width)
-// 		{
-// 			map[y][x++] = (t_points){x, y, ft_atoi(split_line[x]), 0xFFFFFF};
-// 		}
-// 		x = 0;
-// 		while (split_line[x])
-// 			free(split_line[x++]);
-// 		free(split_line);
-// 		split_line = NULL;
-// 		y++;
-// 	}
-// }
 
 // void print_map(t_points **map, int width, int height)
 // {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/06 15:53:21 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:09:24 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	my_abs(t_line_pts line_pts, char xy)
 {
-	int res;
-	
+	int	res;
+
 	if (xy == 'y')
 	{
 		res = line_pts.end.y - line_pts.start.y;
@@ -52,6 +52,7 @@ int	calc_offset(t_image *img, t_n_l line, char hb)
 		return ((img->line_len * line.iy) + (line.ix * (img->bits_pp / 8)));
 	return ((img->line_len * line.iy) + ((line.ix + 1) * (img->bits_pp / 8)));
 }
+
 void	my_px_p(t_image *img, int x, int y, int color)
 {
 	int	offset;

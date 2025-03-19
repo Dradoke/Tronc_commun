@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:59:05 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/14 17:01:36 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:51:44 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	**ft_realloc_tab(void **ptr, size_t old_size, size_t new_size)
 int	count_columns(char *line)
 {
 	int	count;
-	int i;
+	int	i;
 
 	i = 0;
 	count = 0;
@@ -55,7 +55,6 @@ int	count_columns(char *line)
 	return (count);
 }
 
-// Lire un fichier et stocker ses lignes dans un tableau de chaînes.
 char	**read_map_file(const char *filename, int *width, int *height)
 {
 	int		fd;
