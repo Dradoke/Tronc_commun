@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 18:00:16 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:35:50 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	free_map(t_map *map)
 void	print_map(t_points **map, int width, int height)
 {
 	t_index	idx;
-
+	(void) map;
 	idx.ix = 0;
 	idx.iy = 0;
 	while (idx.iy < height)

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 11:56:00 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:48:43 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,22 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 
+typedef struct s_rgba
+{
+	float	r;
+	float	g;
+	float	b;
+	float	a;
+}				t_rgba;
+
 typedef struct s_points
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	int		x;
+	int		y;
+	int		z;
+	t_rgba	color;
+	int		sx;
+	int		sy;
 }				t_points;
 
 typedef struct s_index
@@ -39,12 +49,15 @@ typedef struct s_map
 	char		**lines;
 	int			width;
 	int			height;
+	double		scale;
 }				t_map;
 
 typedef struct s_line_pts
 {
 	t_points	start;
 	t_points	end;
+	t_points	index;
+	t_points	d;
 }				t_line_pts;
 
 typedef struct s_image
@@ -55,6 +68,14 @@ typedef struct s_image
 	int		line_len;
 	int		endian;
 }				t_image;
+
+typedef struct s_tablim
+{
+	int	xmin;
+	int	xmax;
+	int	ymin;
+	int	ymax;
+}				t_tablim;
 
 typedef struct s_new_line
 {

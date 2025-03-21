@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   bit_shifting.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:29 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/22 14:25:41 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:57:45 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	create_trgb(int t, int r, int g, int b)
+int	create_argb(int a, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return (a << 24 | r << 16 | g << 8 | b);
 }
 
-int	get_t(int trgb)
+int	get_t(int argb)
 {
-	return ((trgb >> 24) & 0xFF);
+	return ((argb >> 24) & 0xFF);
 }
 
-int	get_r(int trgb)
+int	get_r(int argb)
 {
-	return ((trgb >> 16) & 0xFF);
+	return ((argb >> 16) & 0xFF);
 }
 
-int	get_g(int trgb)
+int	get_g(int argb)
 {
-	return ((trgb >> 8) & 0xFF);
+	return ((argb >> 8) & 0xFF);
 }
 
-int	get_b(int trgb)
+int	get_b(int argb)
 {
-	return (trgb & 0xFF);
+	return (argb & 0xFF);
 }

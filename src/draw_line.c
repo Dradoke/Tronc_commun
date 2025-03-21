@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_line.c                                        :+:      :+:    :+:   */
+/*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 11:10:13 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:53:24 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 		color = bld_clr(line, line_pts, img, 'b');
 		my_px_p(img, line.ix, line.iy + 1, color);
 	}
-	my_px_p(img, line_pts.start.x, line_pts.start.y, line_pts.start.color);
+	my_px_p(img, line_pts.start.x, line_pts.start.y,
+		rgbtoi(line_pts.start.color));
 }
 
 void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
@@ -65,7 +66,8 @@ void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 		color = bld_clr(line, line_pts, img, 'b');
 		my_px_p(img, line.ix + 1, line.iy, color);
 	}
-	my_px_p(img, line_pts.start.x, line_pts.start.y, line_pts.start.color);
+	my_px_p(img, line_pts.start.x, line_pts.start.y,
+		rgbtoi(line_pts.start.color));
 }
 
 void	draw_line(t_line_pts line_pts, t_image *img)
