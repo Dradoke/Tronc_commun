@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 11:09:24 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 15:17:22 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ t_line_pts	change_points(t_line_pts line_pts)
 	return (line_pts);
 }
 
-int	calc_offset(t_image *img, t_n_l line, char hb)
+int	calc_offset(t_image *img, t_line_pts line, char hb)
 {
 	if (hb != 't')
-		return ((img->line_len * line.iy) + (line.ix * (img->bits_pp / 8)));
-	return ((img->line_len * line.iy) + ((line.ix + 1) * (img->bits_pp / 8)));
+		return ((img->line_len * line.index.sy) + (line.index.sx * (img->bits_pp / 8)));
+	return ((img->line_len * line.index.sy) + ((line.index.sx + 1) * (img->bits_pp / 8)));
 }
 
 void	my_px_p(t_image *img, int x, int y, int color)

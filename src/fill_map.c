@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:43:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/19 17:59:58 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:57:43 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	fill_map(t_points **map, char **lines, int width, int height)
 
 	y = 0;
 	index.iy = height / 2 - height;
+	// ft_printf("GRID TAB: %d\n", map[x][y].sx);
 	while (y < height)
 	{
 		index.ix = width / 2 - width;
@@ -29,7 +30,7 @@ void	fill_map(t_points **map, char **lines, int width, int height)
 		index.iy++;
 		while (x < width)
 		{
-			map[y][x] = extract_point(split_line[x], ++index.ix, index.iy);
+			map[x][y] = extract_point(split_line[x], ++index.ix, index.iy);
 			x++;
 		}
 		free_split(split_line);
@@ -43,20 +44,20 @@ t_points	extract_point(char *value, int x, int y)
 	char		*z_value;
 	char		*color;
 
-	point.color = 0;
+	point.color = itorgb(0);
 	z_value = extract_z_value(value);
 	color = extract_color(value);
 	if (!z_value || !color)
 	{
 		free(z_value);
 		free(color);
-		return ((t_points){0, 0, 0, 0});
+		return ((t_points){0, 0, 0, itorgb(0), 0, 0});
 	}
 	if (color[0] != '\0')
 		point = (t_points){x, y, ft_atoi(z_value),
-			ft_atoi_base(color, "0123456789ABCDEF")};
+			itorgb(ft_atoi_base(color, "0123456789ABCDEF")), 0, 0};
 	else
-		point = (t_points){x, y, ft_atoi(z_value), 0xFFFFFF};
+		point = (t_points){x, y, ft_atoi(z_value), itorgb(0xFFFFFF), 0, 0};
 	free(z_value);
 	free(color);
 	return (point);

@@ -3,41 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/02/28 19:08:46 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:39:33 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int	add_shade(double distance, int color)
+t_rgba	itorgb(unsigned int color)
 {
-	if (distance == 0)
-		return (color);
-	else if (distance == 1)
-		return (255 << 24 | color);
-	else if (distance == 0.5)
-		return ((255 / 2) << 24 | color);
-	else if (distance == 0.25)
-		return ((255 / 4) << 24 | color);
-	else
-		return (1);
+	t_rgba	rgb;
+
+	rgb.r = (color >> 16) & 0xFF;
+	rgb.g = (color >> 8) & 0xFF;
+	rgb.b = color & 0xFF;
+	return (rgb);
 }
 
-int	get_oposite(int color)
+int	rgbtoi(t_rgba rgb)
 {
-	int	t;
-	int	r;
-	int	g;
-	int	b;
+	int	color;
 
-	t = get_t(color);
-	r = get_r(color);
-	g = get_g(color);
-	b = get_b(color);
-	return (create_trgb(t, b, r, g));
+	color = ((int)rgb.r << 16) | ((int)rgb.g << 8) | (int)rgb.b;
+	return (color);
+}
+
+t_rgba	gradient(t_line_pts l)
+{
+	int		len;
+
+	if (l.d.sx > l.d.sy)
+		len = l.d.sx;
+	else
+		len = c_abs(l.d.sy);
+	l.index.color.r += (l.end.color.r - l.start.color.r) / len;
+	l.index.color.g += (l.end.color.g - l.start.color.g) / len;
+	l.index.color.b += (l.end.color.b - l.start.color.b) / len;
+	return (l.index.color);
 }
 
 int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
@@ -49,7 +53,7 @@ int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
 	float			alpha;
 
 	bg[0] = *((unsigned int *)(line.ost + img->px_ptr));
-	bg[1] = line_pts.start.color;
+	bg[1] = rgbtoi(line_pts.start.color);
 	if (tb == 't')
 		alpha = 1 - line.dist;
 	else
