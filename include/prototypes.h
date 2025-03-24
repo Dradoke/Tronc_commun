@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:53:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/21 15:14:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:40:21 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int			bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb);
 t_rgba	itorgb(unsigned int color);
 int	rgbtoi(t_rgba rgb);
 t_rgba	gradient(t_line_pts l);
+t_rgba	interpol_color(t_line_pts line_pts);
 
 /*-----DRAW_LINE-----*/
 void		wuline(t_line_pts line_pts, t_image *img);

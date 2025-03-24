@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 15:50:57 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:51:48 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,43 @@ int	rgbtoi(t_rgba rgb)
 	return (color);
 }
 
-t_rgba	gradient(t_line_pts l)
-{
-	int		len;
+// void	gradient(t_line_pts *l, t_n_l nl)
+// {
+// 	int	steps;
+// 	int	i;
+// 	float	t;
 
-	if (l.d.sx > l.d.sy)
-		len = l.d.sx;
+// 	if (c_abs(nl.dx) > c_abs(nl.dy))
+// 		steps = c_abs(nl.dx);
+// 	else
+// 		steps = c_abs(nl.dy);
+// 	while (i <= steps)
+// 	{
+// 		t = (float)i / (float)steps;
+		
+// 	}
+// }
+
+t_rgba	interpol_color(t_line_pts line_pts)
+{
+	t_rgba	interpolated_color;
+	float	t;
+
+	// Éviter une division par zéro
+	if (line_pts.end.sy - line_pts.start.sy == 0)
+		t = 0;
 	else
-		len = c_abs(l.d.sy);
-	l.index.color.r += (l.end.color.r - l.start.color.r) / len;
-	l.index.color.g += (l.end.color.g - l.start.color.g) / len;
-	l.index.color.b += (l.end.color.b - l.start.color.b) / len;
-	return (l.index.color);
+		t = (float)(line_pts.index.sy - line_pts.start.sy) / 
+			(float)(line_pts.end.sy - line_pts.start.sy);
+
+	// Interpolation linéaire de chaque canal de couleur
+	interpolated_color.r = (unsigned char)(line_pts.start.color.r + 
+		t * (line_pts.end.color.r - line_pts.start.color.r));
+	interpolated_color.g = (unsigned char)(line_pts.start.color.g + 
+		t * (line_pts.end.color.g - line_pts.start.color.g));
+	interpolated_color.b = (unsigned char)(line_pts.start.color.b + 
+		t * (line_pts.end.color.b - line_pts.start.color.b));
+	return interpolated_color;
 }
 
 int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
@@ -55,7 +80,7 @@ int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
 
 	// bg[0] = *((unsigned int *)(line.ost + img->px_ptr));
 	bg[0] = 0x000000;
-	bg[1] = rgbtoi(line_pts.start.color);
+	bg[1] = rgbtoi(line_pts.index.color);
 	if (tb == 't')
 		alpha = 1 - line.dist;
 	else

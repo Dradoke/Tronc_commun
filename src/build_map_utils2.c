@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:16:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/21 17:43:35 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:23:55 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	enlargetab(t_map *tab)
 		{
 			tab->tab[x][y].x *= 100;
 			tab->tab[x][y].y *= 100;
-			tab->tab[x][y].z *= 100;
+			tab->tab[x][y].z *= 10;
 			x++;
 		}
 		y++;

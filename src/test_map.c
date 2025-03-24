@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 12:44:39 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:57:59 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@
 
 void	init(t_data *data)
 {
-	(*data).mlx = mlx_init();
-	if (!(*data).mlx)
+	data->mlx = mlx_init();
+	if (!data->mlx)
 		return ;
-	(*data).win = mlx_new_window((*data).mlx, WIN_WIDTH, WIN_HEIGHT, "FdF1");
-	if (!(*data).win)
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "FdF1");
+	if (!data->win)
+	{
+		free(data->mlx);
 		return ;
-	(*data).mlx = (*data).mlx;
-	(*data).win = (*data).win;
-	(*data).img.img_ptr = mlx_new_image((*data).mlx, WIN_WIDTH, WIN_HEIGHT);
-	(*data).img.px_ptr = mlx_get_data_addr((*data).img.img_ptr,
-        &(*data).img.bits_pp,&(*data).img.line_len, &(*data).img.endian);
+	}
+	// (*data).mlx = (*data).mlx;
+	// (*data).win = (*data).win;
+	data->img.img_ptr = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!data->img.img_ptr)
+		return (free(data->win), free(data->mlx));
+	data->img.px_ptr = mlx_get_data_addr(data->img.img_ptr,
+        &data->img.bits_pp, &data->img.line_len, &data->img.endian);
 }
 
 int	key_press(int keysym, t_data *data)
@@ -46,7 +51,7 @@ int	close_window(t_data *data)
 	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
-	mlx_do_key_autorepeaton(data->mlx);
+	free_map(data->map);
 	free(data->mlx);
 	exit(1);
 	return (0);
@@ -86,6 +91,7 @@ int main(int argc, char **argv)
         return 1;
     }
     map = build_map(argv[1]);
+	data.map = &map;
     ft_printf("GRID TAB 1: %d\n", map.tab[0][0].sx);
     // checktab(map);
     // Libération de la mémoire
@@ -96,7 +102,6 @@ int main(int argc, char **argv)
 	mlx_key_hook(data.win, key_press, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_loop(data.mlx);
-    // free_map(&map);
     return 0;
 }
 

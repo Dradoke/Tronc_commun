@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 15:47:29 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:04:16 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 		color = bld_clr(line, line_pts, img, 't');
 		// my_px_p(img, line_pts.index.sx, line_pts.index.sy, color);
 		my_px_p(img, line.ix, line.iy, color);
-		printf("l.start sx: %d l.start sy:%d\n", line_pts.start.sx, line_pts.start.sy);
-		printf("l.end sx: %d l.end sy:%d\n\n", line_pts.end.sx, line_pts.end.sy);
+		// printf("l.start sx: %d l.start sy:%d\n", line_pts.start.sx, line_pts.start.sy);
+		// printf("l.end sx: %d l.end sy:%d\n\n", line_pts.end.sx, line_pts.end.sy);
 		color = bld_clr(line, line_pts, img, 'b');
 		// my_px_p(img, line_pts.index.sx, line_pts.index.sy + 1, color);
 		my_px_p(img, line.ix, line.iy + 1, color);
@@ -46,7 +46,7 @@ void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 
 void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 {
-	unsigned int	color;
+	// unsigned int	color;
 	line.dx = line_pts.end.sx - line_pts.start.sx;
 	line.dy = line_pts.end.sy - line_pts.start.sy;
 	if (line.dy != 0)
@@ -63,15 +63,11 @@ void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 		line.dist = (line.x - line.ix);
 		line.ost = calc_offset(img, line_pts, 't');
 		line.osb = calc_offset(img, line_pts, 'b');
-		color = bld_clr(line, line_pts, img, 't');
-		// my_px_p(img, line_pts.index.sx, line_pts.index.sy, color);
-		my_px_p(img, line.ix, line.iy, color);
-		// printf("l.start sx: %d l.start sy:%d\n", line_pts.start.sx, line_pts.start.sy);
-		// printf("l.end sx: %d l.end sy:%d\n\n", line_pts.end.sx, line_pts.end.sy);
-		// printf("l.index sx: %d l.index sy:%d\n", line.ix, line.iy);
-		color = bld_clr(line, line_pts, img, 'b');
-		// my_px_p(img, line_pts.index.sx + 1, line_pts.index.sy, color);
-		my_px_p(img, line.ix + 1, line.iy, color);
+		line_pts.index.sy = line.iy;
+		line_pts.index.color = interpol_color(line_pts);
+		my_px_p(img, line.ix, line.iy, bld_clr(line, line_pts, img, 't'));
+		line_pts.index.color = interpol_color(line_pts);
+		my_px_p(img, line.ix + 1, line.iy, bld_clr(line, line_pts, img, 't'));
 	}
 	my_px_p(img, line_pts.start.sx, line_pts.start.sy,
 		rgbtoi(line_pts.start.color));
@@ -125,6 +121,7 @@ void	draw_line(t_image *img, t_points start, t_points end)
 
 	l.start = start;
 	l.end = end;
+	printf("Z: %f\n", l.end.z);
 	// if ((l.end.sx - l.start.sx) < 0)
 	// {
 	// 	temp_color = l.start.color;

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:43:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/21 17:57:43 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:01:24 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ t_points	extract_point(char *value, int x, int y)
 		point = (t_points){x, y, ft_atoi(z_value),
 			itorgb(ft_atoi_base(color, "0123456789ABCDEF")), 0, 0};
 	else
-		point = (t_points){x, y, ft_atoi(z_value), itorgb(0xFFFFFF), 0, 0};
-	free(z_value);
-	free(color);
-	return (point);
+		if (ft_atoi(z_value) == 0)
+			point = (t_points){x, y, ft_atoi(z_value), itorgb(0xFFFFFF), 0, 0};
+		else if (ft_atoi(z_value) < 0)
+			point = (t_points){x, y, ft_atoi(z_value), itorgb(0x0000FF), 0, 0};
+		else
+			point = (t_points){x, y, ft_atoi(z_value), itorgb(0xfd6c9e), 0, 0};
+	return (free(z_value),free(color),point);
 }
 
 char	*extract_color(char *value)

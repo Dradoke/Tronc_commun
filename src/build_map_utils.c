@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:59:05 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/21 14:07:23 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:00:39 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ char	**read_map_file(const char *filename, int *width, int *height)
 		if (!add_line_to_map(&lines, line, *height))
 		{
 			close(fd);
-			return (NULL);
+			return (free(line), free_map_lines(lines, *height), NULL);
 		}
 		(*height)++;
 		line = get_next_line(fd);
 	}
 	close(fd);
+	free(line);
 	return (lines);
 }
 
@@ -103,7 +104,8 @@ int	add_line_to_map(char ***lines, char *line, int height)
 void	free_map_lines(char **lines, int height)
 {
 	int	i;
-
+	if (!lines)
+		return ;
 	i = 0;
 	while (i < height)
 		free(lines[i++]);
