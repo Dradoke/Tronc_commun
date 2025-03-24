@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/21 17:39:33 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:50:57 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
 	unsigned char	g;
 	unsigned char	b;
 	float			alpha;
+	(void)img;
 
-	bg[0] = *((unsigned int *)(line.ost + img->px_ptr));
+	// bg[0] = *((unsigned int *)(line.ost + img->px_ptr));
+	bg[0] = 0x000000;
 	bg[1] = rgbtoi(line_pts.start.color);
 	if (tb == 't')
 		alpha = 1 - line.dist;

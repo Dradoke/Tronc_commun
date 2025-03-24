@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/21 15:17:22 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:33:32 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ t_line_pts	change_points(t_line_pts line_pts)
 {
 	int	tempo;
 
-	tempo = line_pts.start.x;
-	line_pts.start.x = line_pts.end.x;
-	line_pts.end.x = tempo;
-	tempo = line_pts.start.y;
-	line_pts.start.y = line_pts.end.y;
-	line_pts.end.y = tempo;
+	tempo = line_pts.start.sx;
+	line_pts.start.sx = line_pts.end.sx;
+	line_pts.end.sx = tempo;
+	tempo = line_pts.start.sy;
+	line_pts.start.sy = line_pts.end.sy;
+	line_pts.end.sy = tempo;
 	return (line_pts);
 }
 
