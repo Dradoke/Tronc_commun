@@ -6,14 +6,14 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/03/25 11:48:43 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/03/25 15:18:55 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 NAME = fdf
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Iminilibx/ -Ilib/libft-g -g3
+CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Iminilibx/ -Ilib/libft -g -g3
 LDFLAGS = -Llib/libft -Lminilibx -lmlx_Linux -lm -lXext -lX11 -lz -lft
 
 # Dossiers

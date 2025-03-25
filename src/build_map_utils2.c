@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:16:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 16:23:55 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:09:59 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,4 @@ void	enlargetab(t_map *tab)
 		}
 		y++;
 	}
-	printf("\nENLARGE TAB APRES\n");
-	printf("line_pts.end.x: %f\n", tab->tab[0 + 1][0].x);
-	printf("line_pts.start.x: %f\n", tab->tab[0][0].x);
 }

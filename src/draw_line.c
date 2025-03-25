@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 17:04:16 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:32:47 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 	{
 		line.x = line_pts.start.sx + line.i;
 		line.y = line_pts.start.sy + (line.i * line.m);
-		line.ix = (int)line.x;
-		line.iy = (int)floor(line.y);
+		line.ix = (int)line.x + img->mv_tab.ix;
+		line.iy = (int)floor(line.y) + img->mv_tab.iy;
 		line.dist = (line.y - line.iy);
 		line.ost = calc_offset(img, line_pts, 't');
 		line.osb = calc_offset(img, line_pts, 'b');
@@ -58,8 +58,8 @@ void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 	{
 		line.x = line_pts.start.sx + (line.i * line.m);
 		line.y = line_pts.start.sy + line.i;
-		line.ix = (int)line.x;
-		line.iy = (int)floor(line.y);
+		line.ix = (int)line.x + img->mv_tab.ix;
+		line.iy = (int)floor(line.y) + img->mv_tab.iy;
 		line.dist = (line.x - line.ix);
 		line.ost = calc_offset(img, line_pts, 't');
 		line.osb = calc_offset(img, line_pts, 'b');
@@ -98,6 +98,7 @@ void	draw_grid(t_image *img, t_map grid)
 	int		y;
 
 	y = 0;
+	printf("adresse de img: %p", &img);
 	while (y < grid.height)
 	{
 		x = 0;
@@ -121,7 +122,6 @@ void	draw_line(t_image *img, t_points start, t_points end)
 
 	l.start = start;
 	l.end = end;
-	printf("Z: %f\n", l.end.z);
 	// if ((l.end.sx - l.start.sx) < 0)
 	// {
 	// 	temp_color = l.start.color;

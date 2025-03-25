@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:53:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/25 12:38:18 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:44:13 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ t_map	centermap(t_map *tab, t_tablim t);
 void	enlargetab(t_map *tab);
 
 /*-----HOOKS-----*/
-int mouse_hook(int button, int x, int y, t_data *app);
+int	key_press(int keysym, t_data *data);
+
+/*-----TESTS-----*/
+void	move_img(t_data *data);
 
 /*-----WINDOW-----*/
 int	close_window(t_data *data);
 
 /*-----PROGRAMME-----*/
-int	key_press(int keysym, t_data *data);
 void	init(t_data *data);
 #endif

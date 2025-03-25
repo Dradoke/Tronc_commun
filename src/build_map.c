@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/25 11:28:16 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:10:54 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ t_map	build_map(const char *filename)
 		free_map_lines(map.lines, map.height);
 		return (map);
 	}
-	// ft_printf("GRID TAB: %d\n", map.tab[0][0].sx);
 	fill_map(map.tab, map.lines, map.width, map.height);
-	// print_map(map.tab, map.width, map.height);
 	free_map_lines(map.lines, map.height);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:49:40 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/25 12:36:55 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:00:33 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_image
 	int		bits_pp;
 	int		line_len;
 	int		endian;
+	t_index	mv_tab;
 }				t_image;
 
 typedef struct s_tablim
