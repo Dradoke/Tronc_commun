@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 19:16:41 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 11:28:16 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ void	free_map(t_map *map)
 	if (map->tab)
 	{
 		i = 0;
-		while (i < map->height)
-			free(map->tab[i++]);
+		while (i < map->width)
+		{
+			free(map->tab[i]);
+			i++;
+		}
 		free(map->tab);
 	}
 	map->lines = NULL;

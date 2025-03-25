@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:53:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 18:40:21 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:38:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ void	autozoom(t_map *tab, t_tablim t);
 t_map	centermap(t_map *tab, t_tablim t);
 void	enlargetab(t_map *tab);
 
-/*-----PROGRAMME-----*/
+/*-----HOOKS-----*/
+int mouse_hook(int button, int x, int y, t_data *app);
+
+/*-----WINDOW-----*/
 int	close_window(t_data *data);
+
+/*-----PROGRAMME-----*/
 int	key_press(int keysym, t_data *data);
 void	init(t_data *data);
 #endif

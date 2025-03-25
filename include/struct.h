@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:49:40 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 18:56:58 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:36:55 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ typedef struct s_data
 	void	*win;
 	t_image	img;
 	t_map	*map;
+	int      win_width;
+    int      win_height;
 }				t_data;
 #endif

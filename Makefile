@@ -1,24 +1,24 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ngaudoui <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/03/06 15:43:51 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/03/25 11:48:43 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 NAME = fdf
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Iminilibx/ -Ilib/libft-g
+CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Iminilibx/ -Ilib/libft-g -g3
 LDFLAGS = -Llib/libft -Lminilibx -lmlx_Linux -lm -lXext -lX11 -lz -lft
 
 # Dossiers
 SRC = src/
-OBJ = obj/
+OBJ_DIR = obj/
 BIN = bin/
 LIB = lib/
 LIBFT_DIR = $(LIB)libft/
@@ -29,7 +29,7 @@ LIBFT_REPO = git@github.com:Dradoke/libft.git
 
 # Fichiers sources et objets
 SRCS = $(wildcard $(SRC)*.c)
-OBJS = $(patsubst $(SRC)%.c, $(OBJ)%.o, $(SRCS))
+OBJS = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 # Default target
 all: clone_libft $(LIBFT_DIR)libft.a $(BIN)$(NAME)
@@ -52,13 +52,13 @@ $(BIN)$(NAME): $(OBJS) $(LIBFT_DIR)libft.a
 	$(CC) $(OBJS) $(LDFLAGS) -o $@
 
 # Compilation des fichiers .c en .o
-$(OBJ)%.o: $(SRC)%.c
-	@mkdir -p $(OBJ)
+$(OBJ_DIR)%.o: $(SRC)%.c
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Nettoyage des fichiers objets et libft
 clean:
-	rm -rf $(OBJ) $(LIB)
+	rm -rf $(OBJ_DIR) $(LIB)
 
 # Nettoyage complet (supprime aussi l’exécutable)
 fclean: clean

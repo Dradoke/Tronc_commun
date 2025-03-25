@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 18:57:59 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:38:30 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	init(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return ;
-	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "FdF1");
+	data->win_width = WIN_WIDTH;
+	data->win_height = WIN_HEIGHT;
+	data->win = mlx_new_window(data->mlx, data->win_width, data->win_height, "FdF1");
 	if (!data->win)
 	{
 		free(data->mlx);
 		return ;
 	}
-	// (*data).mlx = (*data).mlx;
-	// (*data).win = (*data).win;
-	data->img.img_ptr = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
+	data->img.img_ptr = mlx_new_image(data->mlx, data->win_width, data->win_height);
 	if (!data->img.img_ptr)
 		return (free(data->win), free(data->mlx));
 	data->img.px_ptr = mlx_get_data_addr(data->img.img_ptr,
@@ -46,16 +46,7 @@ int	key_press(int keysym, t_data *data)
 	return (0);
 }
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_image(data->mlx, data->img.img_ptr);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free_map(data->map);
-	free(data->mlx);
-	exit(1);
-	return (0);
-}
+
 
 void	checktab(t_map tab)
 {
@@ -93,8 +84,6 @@ int main(int argc, char **argv)
     map = build_map(argv[1]);
 	data.map = &map;
     ft_printf("GRID TAB 1: %d\n", map.tab[0][0].sx);
-    // checktab(map);
-    // Libération de la mémoire
 	init(&data);
 	drawtabiso(&data.img, map);
     ft_printf("OUAIS\n");
