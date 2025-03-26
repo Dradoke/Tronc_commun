@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 16:51:48 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:38:47 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,38 +47,52 @@ int	rgbtoi(t_rgba rgb)
 // 	}
 // }
 
-t_rgba	interpol_color(t_line_pts line_pts)
+t_rgba	interpol_color_v(t_line_pts line_pts)
 {
 	t_rgba	interpolated_color;
 	float	t;
 
-	// Éviter une division par zéro
 	if (line_pts.end.sy - line_pts.start.sy == 0)
 		t = 0;
 	else
-		t = (float)(line_pts.index.sy - line_pts.start.sy) / 
-			(float)(line_pts.end.sy - line_pts.start.sy);
-
-	// Interpolation linéaire de chaque canal de couleur
-	interpolated_color.r = (unsigned char)(line_pts.start.color.r + 
-		t * (line_pts.end.color.r - line_pts.start.color.r));
-	interpolated_color.g = (unsigned char)(line_pts.start.color.g + 
-		t * (line_pts.end.color.g - line_pts.start.color.g));
-	interpolated_color.b = (unsigned char)(line_pts.start.color.b + 
-		t * (line_pts.end.color.b - line_pts.start.color.b));
-	return interpolated_color;
+		t = (float)(line_pts.index.sy - line_pts.start.sy)
+			/ (float)(line_pts.end.sy - line_pts.start.sy);
+	interpolated_color.r = (unsigned char)(line_pts.start.color.r
+			+ t * (line_pts.end.color.r - line_pts.start.color.r));
+	interpolated_color.g = (unsigned char)(line_pts.start.color.g
+			+ t * (line_pts.end.color.g - line_pts.start.color.g));
+	interpolated_color.b = (unsigned char)(line_pts.start.color.b
+			+ t * (line_pts.end.color.b - line_pts.start.color.b));
+	return (interpolated_color);
 }
 
-int	bld_clr(t_n_l line, t_line_pts line_pts, t_image *img, char tb)
+t_rgba	interpol_color_h(t_line_pts line_pts)
+{
+	t_rgba	interpolated_color;
+	float	t;
+
+	if (line_pts.end.sx - line_pts.start.sx == 0)
+		t = 0;
+	else
+		t = (float)(line_pts.index.sx - line_pts.start.sx)
+			/ (float)(line_pts.end.sx - line_pts.start.sx);
+	interpolated_color.r = (unsigned char)(line_pts.start.color.r
+			+ t * (line_pts.end.color.r - line_pts.start.color.r));
+	interpolated_color.g = (unsigned char)(line_pts.start.color.g
+			+ t * (line_pts.end.color.g - line_pts.start.color.g));
+	interpolated_color.b = (unsigned char)(line_pts.start.color.b
+			+ t * (line_pts.end.color.b - line_pts.start.color.b));
+	return (interpolated_color);
+}
+
+int	bld_clr(t_n_l line, t_line_pts line_pts, char tb)
 {
 	unsigned int	bg[2];
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
 	float			alpha;
-	(void)img;
 
-	// bg[0] = *((unsigned int *)(line.ost + img->px_ptr));
 	bg[0] = 0x000000;
 	bg[1] = rgbtoi(line_pts.index.color);
 	if (tb == 't')
