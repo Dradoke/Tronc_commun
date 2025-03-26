@@ -6,11 +6,34 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:16:53 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/20 18:03:09 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:47:02 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
+
+
+static void	rotate_both(t_stack_node **a,
+						t_stack_node **b,
+						t_stack_node *cheapest_node)
+{
+	while (*b != cheapest_node->target_node
+			&& *a != cheapest_node)
+		rr(a, b, false);
+	current_index(*a);
+	current_index(*b);
+}
+
+static void	rev_rotate_both(t_stack_node **a,
+							t_stack_node **b,
+							t_stack_node *cheapest_node)
+{
+	while (*b != cheapest_node->target_node
+			&& *a != cheapest_node)
+		rrr(a, b, false);
+	current_index(*a);
+	current_index(*b);
+}
 
 static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {
@@ -56,6 +79,12 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
+	}
+	sort_three(a);
+	while (*b)
+	{
+		init_nodes_b(*a, *b);
 		move_b_to_a(a, b);
 	}
 	current_index(*a);

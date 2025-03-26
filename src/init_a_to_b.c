@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:22:19 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/20 17:40:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:31:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 		if (best_match_index == LONG_MIN)
 			a->target_node = find_max(b);
 		else
-			a->target_node = find_max(b);
+			a->target_node = target_node;
 		a = a->next;
 	}
 }
