@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:59:05 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 19:00:39 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:28:41 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int	add_line_to_map(char ***lines, char *line, int height)
 {
 	char	**temp;
 
-	temp = (char **)ft_realloc_tab((void **)*lines,
-			height * sizeof(char *), (height + 1) * sizeof(char *));
+	temp = (char **)ft_realloc_tab((void **)*lines, height * sizeof(char *),
+			(height + 1) * sizeof(char *));
 	if (!temp)
 	{
 		free(line);
@@ -104,6 +104,7 @@ int	add_line_to_map(char ***lines, char *line, int height)
 void	free_map_lines(char **lines, int height)
 {
 	int	i;
+
 	if (!lines)
 		return ;
 	i = 0;

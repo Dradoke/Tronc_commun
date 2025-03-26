@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:16:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 13:45:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:28:46 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_points	cartesian_to_screen(t_points point)
 
 void	autozoom(t_map *tab, t_tablim t)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	tab->scale = 0;
 	y = 0;
@@ -49,7 +49,8 @@ void	autozoom(t_map *tab, t_tablim t)
 		x = 0;
 		while (x < tab->width)
 		{
-			while (t.xmax * tab->scale < (WIN_WIDTH / 2) - 20 && t.ymax * tab->scale < (WIN_HEIGHT / 2) - 20)
+			while (t.xmax * tab->scale < (WIN_WIDTH / 2) - 20 && t.ymax
+				* tab->scale < (WIN_HEIGHT / 2) - 20)
 				tab->scale += 0.000001;
 			tab->tab[x][y].sx *= tab->scale;
 			tab->tab[x][y].sy *= tab->scale;
@@ -61,10 +62,10 @@ void	autozoom(t_map *tab, t_tablim t)
 
 t_map	centermap(t_map *tab, t_tablim t)
 {
-	int 	yoffset;
-	int		xoffset;
-	int		x;
-	int		y;
+	int	yoffset;
+	int	xoffset;
+	int	x;
+	int	y;
 
 	yoffset = (c_abs(t.ymin) - c_abs(t.ymax)) / 2;
 	xoffset = (c_abs(t.xmin) - c_abs(t.xmax)) / 2;
@@ -85,8 +86,8 @@ t_map	centermap(t_map *tab, t_tablim t)
 
 void	enlargetab(t_map *tab)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < tab->height)

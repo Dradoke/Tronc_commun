@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 13:41:29 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:29:09 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	wuline(t_line_pts line_pts, t_image *img)
 
 void	draw_grid(t_image *img, t_map grid)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < grid.height)

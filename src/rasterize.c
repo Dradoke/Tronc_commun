@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:06:10 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/24 18:41:37 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:34:43 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ t_map	rasterize(t_map *tab)
 			temp_x = tab->tab[x][y].x;
 			temp_y = tab->tab[x][y].y;
 			tab->tab[x][y].x = (temp_x - temp_y) * cos(M_PI / 6);
-			tab->tab[x][y].y = (temp_x + temp_y) * sin(M_PI / 6) - tab->tab[x][y].z;
+			tab->tab[x][y].y = (temp_x + temp_y) * sin(M_PI / 6)
+				- tab->tab[x][y].z;
 			tab->tab[x][y].sx = (int)tab->tab[x][y].x;
-			// printf("sx: %d\n", tab->tab[x][y].sx);
 			tab->tab[x][y].sy = (int)tab->tab[x][y].y;
 			x++;
 		}
 		y++;
 	}
-	printf("sx: %d\n", tab->tab[1][0].sx);
 	return (*tab);
 }
 
