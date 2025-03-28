@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 16:21:25 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:22:36 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_map	map;
-
 	if (argc != 2)
-		return (ft_printf("Usage: %s <fichier_map.fdf>\n", argv[0]), 1);
+		return (ft_printf(ERROR_ARG), 1);
 	map = build_map(argv[1]);
 	if (!map.lines)
-		return (ft_printf("File not valid or doesn't exist\n"), 1);
+		return (ft_printf(ERROR_MAP), 1);
 	data.map = &map;
 	init(&data);
 	drawtabiso(&data.img, map);

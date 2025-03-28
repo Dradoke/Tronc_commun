@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:43:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 15:29:18 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:58:45 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char	*extract_color(char *value)
 	{
 		color[j++] = value[i++];
 	}
+	printf("\n");
 	color[j] = '\0';
 	return (color);
 }

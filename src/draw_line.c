@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 15:29:09 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:35:47 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 {
+	printf("\nStart x: %d, Start y: %d\nEnd x: %d, End y: %d\n", line_pts.start.sx, line_pts.start.sy, line_pts.end.sx, line_pts.end.sy);
 	line.dx = line_pts.end.sx - line_pts.start.sx;
+	printf("dx: %d", (int)line.dx);
 	line.dy = line_pts.end.sy - line_pts.start.sy;
 	if (line.dx != 0)
 		line.m = line.dy / line.dx;
@@ -22,8 +24,8 @@ void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 		line.m = 1;
 	line.i = 0;
 	my_px_p(img, line_pts.index.sx, line_pts.index.sy,
-		rgbtoi(line_pts.end.color));
-	while (line.i++ < (int)line.dx)
+		rgbtoi(line_pts.start.color));
+	while (line.i++ < c_abs((int)line.dx))
 	{
 		line.x = line_pts.start.sx + line.i;
 		line.y = line_pts.start.sy + (line.i * line.m);
@@ -74,12 +76,14 @@ void	wuline(t_line_pts line_pts, t_image *img)
 
 	if (my_abs(line_pts, 'y') < my_abs(line_pts, 'x'))
 	{
+		printf("HORI");
 		if (line_pts.end.sx < line_pts.start.sx)
 			line_pts = change_points(line_pts);
 		draw_hori_line(line, line_pts, img);
 	}
 	else
 	{
+		printf("VERT");
 		if (line_pts.end.sy < line_pts.start.sy)
 			line_pts = change_points(line_pts);
 		draw_vert_line(line, line_pts, img);
