@@ -6,12 +6,12 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/03/28 15:24:02 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/03/28 15:51:07 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-NAME = "Project Name"
+NAME = minitalk
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Ilib/libft -g -g3
 LDFLAGS = -Llib/libft -lft
