@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:05:24 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 17:34:36 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:57:00 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 	max = LONG_MIN;
 	while (stack)
 	{
-		if (stack->nbr < max)
+		if (stack->nbr > max)
 		{
 			max = stack->nbr;
 			max_node = stack;

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:41:52 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 17:46:02 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:01:52 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	rev_rotate(t_stack_node **stack)
 {
 	t_stack_node	*last;
 
-	if (!stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next)
 		return ;
 	last = find_last(*stack);
 	last->prev->next = NULL;

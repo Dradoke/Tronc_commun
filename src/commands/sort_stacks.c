@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:16:53 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 18:47:02 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:03:45 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
 		rotate_both(a, b, cheapest_node);
-	else if (!(cheapest_node->target_node->above_median)
+	else if (!(cheapest_node->above_median)
 		&& !(cheapest_node->target_node->above_median))
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
