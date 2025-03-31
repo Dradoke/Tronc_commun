@@ -6,9 +6,11 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:49:18 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 15:49:49 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:02:07 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minitalk.h"
 
 int	main(int argc, char **argv)
 {
