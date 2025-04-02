@@ -6,7 +6,7 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/04/02 18:27:20 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/02 18:40:10 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ $(CLIENT_BONUS): $(OBJS_CLIENT_BONUS)
 # Compilation des fichiers .c en .o
 $(OBJ_DIR)%.o: $(SRC)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Cloner Libft dans lib/ s'il n'existe pas
 clone_libft:
