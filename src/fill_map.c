@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:43:09 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 17:58:45 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:02:23 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ char	*extract_color(char *value)
 		i += 3;
 	while (value[i])
 	{
+		if (value[i] == '\n')
+			break ;
 		color[j++] = value[i++];
 	}
 	printf("\n");
@@ -99,6 +101,9 @@ char	*extract_z_value(char *value)
 		return (NULL);
 	while (value[i] && value[i] != ',')
 	{
+		if ((value[i] >= 'a' && value[i] <= 'z')
+			|| (value[i] >= 'A' && value[i] <= 'Z'))
+			return (ft_printf(ERROR_MAP), exit(1), z_value);
 		z_value[i] = value[i];
 		i++;
 	}
