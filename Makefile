@@ -6,12 +6,15 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/03/28 15:51:07 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/02 18:27:20 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-NAME = minitalk
+SERVER = server
+SERVER_BONUS = server_bonus
+CLIENT = client
+CLIENT_BONUS = client_bonus
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Ilib/libft -g -g3
 LDFLAGS = -Llib/libft -lft
@@ -27,11 +30,43 @@ LIBFT_DIR = $(LIB)libft/
 LIBFT_REPO = git@github.com:Dradoke/libft.git
 
 # Fichiers sources et objets
-SRCS = $(wildcard $(SRC)*.c)
-OBJS = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS))
+SRCS_CLIENT = 			$(SRC)client.c \
+						$(SRC)utils.c
+SRCS_CLIENT_BONUS = 	$(SRC)client_bonus.c \
+						$(SRC)utils_bonus.c
 
+SRCS_SERVER =			$(SRC)server.c \
+						$(SRC)utils.c
+SRCS_SERVER_BONUS =		$(SRC)server_bonus.c \
+						$(SRC)utils_bonus.c
+OBJS_CLIENT = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_CLIENT))
+OBJS_CLIENT_BONUS = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_CLIENT_BONUS))
+
+OBJS_SERVER = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_SERVER))
+OBJS_SERVER_BONUS = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_SERVER_BONUS))
 # Default target
-all: clone_libft $(LIBFT_DIR)libft.a $(BIN)$(NAME)
+all:	clone_libft $(LIBFT_DIR)libft.a $(SERVER) $(CLIENT)
+bonus:	clone_libft $(LIBFT_DIR)libft.a $(SERVER_BONUS) $(CLIENT_BONUS)
+
+# Compiler Libft
+$(LIBFT_DIR)libft.a:
+	@$(MAKE) -C $(LIBFT_DIR)
+
+# Compiler FDF
+$(SERVER): $(OBJS_SERVER)
+	$(CC) $(OBJS_SERVER) $(LDFLAGS) -o $@
+$(SERVER_BONUS):  $(OBJS_SERVER_BONUS)
+	$(CC) $(OBJS_SERVER_BONUS) $(LDFLAGS) -o $@
+
+$(CLIENT): $(OBJS_CLIENT)
+	$(CC) $(OBJS_CLIENT) $(LDFLAGS) -o $@
+$(CLIENT_BONUS): $(OBJS_CLIENT_BONUS)
+	$(CC) $(OBJS_CLIENT_BONUS) $(LDFLAGS) -o $@
+
+# Compilation des fichiers .c en .o
+$(OBJ_DIR)%.o: $(SRC)%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Cloner Libft dans lib/ s'il n'existe pas
 clone_libft:
@@ -41,27 +76,13 @@ clone_libft:
 		git clone $(LIBFT_REPO) $(LIBFT_DIR); \
 	fi
 
-# Compiler Libft
-$(LIBFT_DIR)libft.a:
-	@$(MAKE) -C $(LIBFT_DIR)
-
-# Compiler FDF
-$(BIN)$(NAME): $(OBJS) $(LIBFT_DIR)libft.a
-	@mkdir -p $(BIN)
-	$(CC) $(OBJS) $(LDFLAGS) -o $@
-
-# Compilation des fichiers .c en .o
-$(OBJ_DIR)%.o: $(SRC)%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
 # Nettoyage des fichiers objets et libft
 clean:
 	rm -rf $(OBJ_DIR) $(LIB)
 
 # Nettoyage complet (supprime aussi l’exécutable)
 fclean: clean
-	rm -rf $(BIN)
+	rm -rf $(SERVER) $(SERVER_BONUS) $(CLIENT) $(CLIENT_BONUS)
 
 # Rebuild from zero
 re: fclean all

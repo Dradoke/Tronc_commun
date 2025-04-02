@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"signal.h": "c",
-		"sigset_t.h": "c"
+		"sigset_t.h": "c",
+		"minitalk.h": "c"
 	}
 }
