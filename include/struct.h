@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:49:40 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 16:05:06 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:22:25 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 # include "fdf.h"
 # include <stdbool.h>
 
-typedef struct s_rgba
+typedef struct s_rgb
 {
 	float	r;
 	float	g;
 	float	b;
-}				t_rgba;
+}				t_rgb;
 
 typedef struct s_points
 {
 	float		x;
 	float		y;
 	float		z;
-	t_rgba		color;
+	t_rgb		color;
 	int			sx;
 	int			sy;
 }				t_points;
@@ -38,14 +38,22 @@ typedef struct s_index
 	int	iy;
 }				t_index;
 
-typedef struct s_map
+typedef struct s_tablim
+{
+	int			xmin;
+	int			xmax;
+	int			ymin;
+	int			ymax;
+}				t_tablim;
+
+typedef struct s_tab
 {
 	t_points	**tab;
 	char		**lines;
 	int			width;
 	int			height;
-	double		scale;
-}				t_map;
+	t_tablim	lim;
+}				t_tab;
 
 typedef struct s_line_pts
 {
@@ -68,14 +76,6 @@ typedef struct s_image
 	t_index	mv_tab;
 }				t_image;
 
-typedef struct s_tablim
-{
-	int	xmin;
-	int	xmax;
-	int	ymin;
-	int	ymax;
-}				t_tablim;
-
 typedef struct s_new_line
 {
 	float	dx;
@@ -91,14 +91,27 @@ typedef struct s_new_line
 	int		osb;
 }				t_n_l;
 
+typedef struct s_input
+{
+	float		rot_x;
+	float		rot_y;
+	float		rot_z;
+	float		zoom;
+	int			zoom_bool;
+	float		h_factr;
+	int			pos_x;
+	int			pos_y;
+}				t_input;
+
 typedef struct s_data
 {
 	t_xvar	*mlx;
 	void	*win;
 	t_image	img;
-	t_map	*map;
+	t_tab	tab;
 	int		win_width;
 	int		win_height;
 	bool	easter_egg;
+	t_input		in;
 }				t_data;
 #endif

@@ -6,29 +6,27 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 15:37:09 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:23:59 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-t_map	build_map(const char *filename)
+char	build_tab(const char *filename, t_tab *tab)
 {
-	t_map	map;
-
-	map.lines = read_map_file(filename, &map.width, &map.height);
-	if (!map.lines)
-		return (map);
-	map.tab = allocate_map(map.width, map.height);
-	if (!map.tab)
+	*tab = (t_tab){NULL, NULL, 0, 0, (t_tablim){0}};
+	if (!read_map_file(tab, filename))
+		return (ft_printf("Error: ReadMapFile\n"), 0);
+	tab->tab = allocate_map(tab->width, tab->height);
+	if (!tab->tab)
 	{
-		free_map(&map);
-		free_map_lines(map.lines, map.height);
-		return (map);
+		free_map(tab);
+		free_map_lines(tab->lines, tab->height);
+		return (ft_printf("Error: AllocateMap\n"), 0);
 	}
-	fill_map(map.tab, map.lines, map.width, map.height);
-	free_map_lines(map.lines, map.height);
-	return (map);
+	fill_map(tab->tab, tab->lines, tab->width, tab->height);
+	free_map_lines(tab->lines, tab->height);
+	return (ft_printf("Success: BuildMap\n"), 1);
 }
 
 t_points	**allocate_map(int width, int height)
@@ -59,7 +57,7 @@ t_points	**allocate_map(int width, int height)
 	return (map);
 }
 
-void	free_map(t_map *map)
+void	free_map(t_tab *map)
 {
 	int	i;
 

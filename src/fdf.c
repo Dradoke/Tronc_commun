@@ -6,13 +6,23 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 18:22:36 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:29:20 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 #include <fcntl.h>
 #include <unistd.h>
+
+char	init_img(t_data *data)
+{
+	data->img.img_ptr = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!data->img.img_ptr)
+		return (free(data->mlx), free(data->win), 0);
+	data->img.px_ptr = mlx_get_data_addr(data->img.img_ptr,
+			&data->img.bits_pp, &data->img.line_len, &data->img.endian);
+	return (1);
+}
 
 void	init(t_data *data)
 {
@@ -44,18 +54,16 @@ void	init(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
-	t_map	map;
+	t_data		data;
+
 	if (argc != 2)
-		return (ft_printf(ERROR_ARG), 1);
-	map = build_map(argv[1]);
-	if (!map.lines)
-		return (ft_printf(ERROR_MAP), 1);
-	data.map = &map;
+		return (ft_printf(ERROR_ARG, argc), 1);
+	if (!build_tab(argv[1], &data.tab))
+		return (ft_printf(ERROR_MAP, argv[1]), 1);
 	init(&data);
-	drawtabiso(&data.img, map);
-	mlx_put_image_to_window(data.mlx, data.win, data.img.img_ptr, 0, 0);
-	mlx_key_hook(data.win, key_press, &data);
+	data.in = (t_input){45, 30, -35, 0, 1, 100, 0, 0};
+	drawtabiso(&data);
+	mlx_hook(data.win, 2, 1L << 0, key_handler, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_loop(data.mlx);
 	return (0);

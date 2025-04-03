@@ -6,100 +6,85 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:16:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 17:14:46 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:35:51 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	iter2tab(t_map *src, t_map *dest, t_points (*f)(t_points))
+int	adjust_coord(t_data *data)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < (*src).height)
+	while (y < data->tab.height)
 	{
 		x = 0;
-		while (x < (*src).width)
+		while (x < data->tab.width)
 		{
-			(*dest).tab[x][y] = f((*src).tab[x][y]);
+			data->tab.tab[x][y].sx += ((WIN_WIDTH - 1) / 2);
+			data->tab.tab[x][y].sy += ((WIN_HEIGHT - 1) / 2);
+			data->tab.tab[x][y].sx += data->in.pos_x;
+			data->tab.tab[x][y].sy += data->in.pos_y;
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
+t_tab	centermap(t_data *data)
+{
+	int		yoffset;
+	int		xoffset;
+	int		x;
+	int		y;
+
+	yoffset = (c_abs(data->tab.lim.ymin) - c_abs(data->tab.lim.ymax)) / 2;
+	xoffset = (c_abs(data->tab.lim.xmin) - c_abs(data->tab.lim.xmax)) / 2;
+	y = 0;
+	while (y < data->tab.height)
+	{
+		x = 0;
+		while (x < data->tab.width)
+		{
+			data->tab.tab[x][y].sy += yoffset;
+			data->tab.tab[x][y].sx += xoffset;
+			x++;
+		}
+		y++;
+	}
+	return (data->tab);
+}
+
+void	enlargetab(t_data *data)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < data->tab.height)
+	{
+		x = 0;
+		while (x < data->tab.width)
+		{
+			data->tab.tab[x][y].x *= 100;
+			data->tab.tab[x][y].y *= 100;
+			if (data->in.h_factr != 0)
+				data->tab.tab[x][y].z *= data->in.h_factr;
 			x++;
 		}
 		y++;
 	}
 }
 
-t_points	cartesian_to_screen(t_points point)
+float	ft_degtorad(float deg)
 {
-	point.sx += ((WIN_WIDTH - 1) / 2);
-	point.sy += ((WIN_HEIGHT - 1) / 2);
-	return (point);
-}
+	float		pi;
+	float		rad;
 
-void	autozoom(t_map *tab, t_tablim t)
-{
-	int	x;
-	int	y;
-
-	tab->scale = 0;
-	y = 0;
-	while (y < tab->height)
-	{
-		x = 0;
-		while (x < tab->width)
-		{
-			while (t.xmax * tab->scale < (WIN_WIDTH / 2) - 20 && t.ymax
-				* tab->scale < (WIN_HEIGHT / 2) - 20)
-				tab->scale += 0.000001;
-			tab->tab[x][y].sx *= tab->scale;
-			tab->tab[x][y].sy *= tab->scale;
-			x++;
-		}
-		y++;
-	}
-}
-
-t_map	centermap(t_map *tab, t_tablim t)
-{
-	int	yoffset;
-	int	xoffset;
-	int	x;
-	int	y;
-
-	yoffset = (c_abs(t.ymin) - c_abs(t.ymax)) / 2;
-	xoffset = (c_abs(t.xmin) - c_abs(t.xmax)) / 2;
-	y = 0;
-	while (y < tab->height)
-	{
-		x = 0;
-		while (x < tab->width)
-		{
-			tab->tab[x][y].sy += yoffset;
-			tab->tab[x][y].sx += xoffset;
-			x++;
-		}
-		y++;
-	}
-	return (*tab);
-}
-
-void	enlargetab(t_map *tab)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < tab->height)
-	{
-		x = 0;
-		while (x < tab->width)
-		{
-			tab->tab[x][y].x *= 100;
-			tab->tab[x][y].y *= 100;
-			tab->tab[x][y].z *= 50;
-			x++;
-		}
-		y++;
-	}
+	pi = 3.14159265358979323846f;
+	rad = deg * (pi / 180.0f);
+	return (rad);
 }

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:54 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 17:41:31 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:32:34 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # define WIN_WIDTH 1800
 # define WIN_HEIGHT 900
+# define M_PI 3.14159265358979323846
 # define ERROR_MAP "File not valid or doesn't exist\n"
 # define ERROR_ARG "Usage: %s <fichier_map.fdf>\n", argv[0]
 

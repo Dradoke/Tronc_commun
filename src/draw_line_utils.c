@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 17:08:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:16:19 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	my_abs(t_line_pts line_pts, char xy)
 t_line_pts	change_points(t_line_pts line_pts)
 {
 	int		tempo;
-	t_rgba	color;
+	t_rgb	color;
 
 	tempo = line_pts.start.sx;
 	line_pts.start.sx = line_pts.end.sx;

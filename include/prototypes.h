@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:53:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 15:35:42 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:42:58 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 /*-----COLOR_UTILS-----*/
 int			bld_clr(t_n_l line, t_line_pts line_pts, char tb);
-t_rgba		itorgb(unsigned int color);
-int			rgbtoi(t_rgba rgb);
-t_rgba		interpol_color_v(t_line_pts line_pts);
-t_rgba		interpol_color_h(t_line_pts line_pts);
+t_rgb		itorgb(unsigned int color);
+int			rgbtoi(t_rgb rgb);
+t_rgb		interpol_color_v(t_line_pts line_pts);
+t_rgb		interpol_color_h(t_line_pts line_pts);
 
 /*-----DRAW_LINE-----*/
 void		wuline(t_line_pts line_pts, t_image *img);
-void		draw_line(t_image *img, t_points start, t_points end);
+void		draw_line(t_data *data, t_points start, t_points end);
 void		draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img);
 void		draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img);
-void		draw_grid(t_image *img, t_map grid);
+void		draw_grid(t_data *data);
 
 /*-----DRAW_LINE_UTILS-----*/
 int			my_abs(t_line_pts line_pts, char xy);
@@ -35,11 +35,10 @@ int			calc_offset(t_image *img, t_line_pts line, char hb);
 void		my_px_p(t_image *img, int x, int y, int color);
 
 /*-----RASTERIZE-----*/
-t_map		rasterize(t_map *tab);
-t_tablim	getlim(t_map *tab);
-void		drawtabiso(t_image *img, t_map tab);
+t_tab		rasterize(t_data *data);
+void		getlim(t_tab *tab);
+void		drawtabiso(t_data *data);
 int			c_abs(int x);
-void		swap(void **ptr1, void **ptr2);
 
 /*-----FILL_MAP-----*/
 void		fill_map(t_points **map, char **lines, int width, int height);
@@ -49,30 +48,39 @@ char		*extract_color(char *value);
 char		*extract_z_value(char *value);
 
 /*-----BUILD_MAP-----*/
-t_map		build_map(const char *filename);
+char	build_tab(const char *filename, t_tab *tab);
 t_points	**allocate_map(int width, int height);
-void		free_map(t_map *map);
+void		free_map(t_tab *map);
 
 /*-----BUILD_MAP_UTILS-----*/
 void		**ft_realloc_tab(void **ptr, size_t old_size, size_t new_size);
 int			count_columns(char *line);
-char		**read_map_file(const char *filename, int *width, int *height);
+char		read_map_file(t_tab *tab, const char *filename);
 int			add_line_to_map(char ***lines, char *line, int height);
 void		free_map_lines(char **lines, int height);
-void		iter2tab(t_map *src, t_map *dest, t_points (*f)(t_points));
-t_points	cartesian_to_screen(t_points point);
-void		autozoom(t_map *tab, t_tablim t);
-t_map		centermap(t_map *tab, t_tablim t);
-void		enlargetab(t_map *tab);
+float		ft_degtorad(float deg);
+t_tab		centermap(t_data *data);
+void		enlargetab(t_data *data);
+int			adjust_coord(t_data *data);
 
 /*-----HOOKS-----*/
 int			key_press(int keysym, t_data *data);
+int			key_handler(int key, t_data *data);
+int	rotate_hook(int key, t_data *data);
+int	translate_hook(int key, t_data *data);
+int	height_hook(int key, t_data *data);
+int	zoom_hook(int key, t_data *data);
 
-/*-----TESTS-----*/
+/*-----ZOOM-----*/
+void	getscale(t_data *data);
+void	autozoom(t_data *data);
+void	manualzoom(t_data *data);
+
 
 /*-----WINDOW-----*/
 int			close_window(t_data *data);
 
 /*-----PROGRAMME-----*/
 void		init(t_data *data);
+char	init_img(t_data *data);
 #endif

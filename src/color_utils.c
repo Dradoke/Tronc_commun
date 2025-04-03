@@ -6,15 +6,15 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 07:43:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 15:28:59 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:15:48 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-t_rgba	itorgb(unsigned int color)
+t_rgb	itorgb(unsigned int color)
 {
-	t_rgba	rgb;
+	t_rgb	rgb;
 
 	rgb.r = (color >> 16) & 0xFF;
 	rgb.g = (color >> 8) & 0xFF;
@@ -22,7 +22,7 @@ t_rgba	itorgb(unsigned int color)
 	return (rgb);
 }
 
-int	rgbtoi(t_rgba rgb)
+int	rgbtoi(t_rgb rgb)
 {
 	int	color;
 
@@ -30,9 +30,9 @@ int	rgbtoi(t_rgba rgb)
 	return (color);
 }
 
-t_rgba	interpol_color_v(t_line_pts line_pts)
+t_rgb	interpol_color_v(t_line_pts line_pts)
 {
-	t_rgba	interpolated_color;
+	t_rgb	interpolated_color;
 	float	t;
 
 	if (line_pts.end.sy - line_pts.start.sy == 0)
@@ -49,9 +49,9 @@ t_rgba	interpol_color_v(t_line_pts line_pts)
 	return (interpolated_color);
 }
 
-t_rgba	interpol_color_h(t_line_pts line_pts)
+t_rgb	interpol_color_h(t_line_pts line_pts)
 {
-	t_rgba	interpolated_color;
+	t_rgb	interpolated_color;
 	float	t;
 
 	if (line_pts.end.sx - line_pts.start.sx == 0)

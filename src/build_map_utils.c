@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:59:05 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 15:28:41 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:23:10 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,28 @@ int	count_columns(char *line)
 	return (count);
 }
 
-char	**read_map_file(const char *filename, int *width, int *height)
+char	read_map_file(t_tab *tab, const char *filename)
 {
 	int		fd;
 	char	*line;
-	char	**lines;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
-	lines = NULL;
-	*height = 0;
+		return (ft_printf("Error: Invalid FD"), 0);
 	line = get_next_line(fd);
-	while (line != NULL)
+	while (line)
 	{
-		if (*height == 0)
-			*width = count_columns(line);
-		if (!add_line_to_map(&lines, line, *height))
-		{
-			close(fd);
-			return (free(line), free_map_lines(lines, *height), NULL);
-		}
-		(*height)++;
+		if (tab->height == 0)
+			tab->width = count_columns(line);
+		if (!add_line_to_map(&tab->lines, line, tab->height))
+			return (close(fd), free(line),
+				free_map_lines(tab->lines, tab->height), 0);
+		tab->height++;
 		line = get_next_line(fd);
 	}
 	close(fd);
 	free(line);
-	return (lines);
+	return (1);
 }
 
 int	add_line_to_map(char ***lines, char *line, int height)
