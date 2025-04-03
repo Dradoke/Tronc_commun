@@ -2,6 +2,7 @@
 	"files.associations": {
 		"signal.h": "c",
 		"sigset_t.h": "c",
-		"minitalk.h": "c"
+		"minitalk.h": "c",
+		"limits.h": "c"
 	}
 }

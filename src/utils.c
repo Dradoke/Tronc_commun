@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 17:58:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/02 17:48:02 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:23:33 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	my_signal(int signal, void *handler, bool use_siginfo)
 	sigaddset(&sa.sa_mask, SIGUSR2);
 	if (sigaction(signal, &sa, NULL) < 0)
 	{
-		perror("sigaction failed");
+		ft_printf("sigaction failed");
 		exit(EXIT_FAILURE);
 	}
 }
