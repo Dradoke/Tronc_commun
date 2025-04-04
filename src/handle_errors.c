@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:03:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 18:10:56 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:43:53 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,48 @@ int	error_duplicate(t_stack_node *a, int n)
 	return (0);
 }
 
+// void	free_stack(t_stack_node **stack)
+// {
+// 	t_stack_node	*tmp;
+// 	t_stack_node	*current;
+
+// 	if (!stack)
+// 		return ;
+// 	current = *stack;
+// 	while (current)
+// 	{
+// 		tmp = current->next;
+// 		current->nbr = 0;
+// 		free(current);
+// 		current = tmp;
+// 	}
+// 	*stack = NULL;
+// }
+
 void	free_stack(t_stack_node **stack)
 {
-	t_stack_node	*tmp;
-	t_stack_node	*current;
-
-	if (!stack)
+	if (!stack && !(*stack))
 		return ;
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		current->nbr = 0;
-		free(current);
-		current = tmp;
-	}
-	*stack = NULL;
+	if ((*stack)->next)
+		free_stack(&(*stack)->next);
+	free(*stack);
 }
 
-void	free_errors(t_stack_node **a)
+void	free_argv(char **argv)
+{
+	size_t	i;
+
+	i = 0;
+	while (argv[i])
+			free(argv[i++]);
+		free(argv);
+}
+
+void	free_errors(t_stack_node **a, char **argv, bool allocated)
 {
 	free_stack(a);
+	if (allocated)
+		free_argv(argv);
 	ft_printf("Error\n");
 	exit(1);
 }

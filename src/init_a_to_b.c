@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:22:19 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 18:31:18 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:57:12 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	current_index(t_stack_node *stack)
 {
 	int	i;
-	int median;
-	
+	int	median;
+
 	i = 0;
 	if (!stack)
 		return ;
@@ -45,8 +45,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->nbr < a->nbr
-				&& current_b->nbr > best_match_index)
+			if (current_b->nbr < a->nbr && current_b->nbr > best_match_index)
 			{
 				best_match_index = current_b->nbr;
 				target_node = current_b;
@@ -85,8 +84,8 @@ void	set_cheapest(t_stack_node *stack)
 {
 	long			cheapest_value;
 	t_stack_node	*cheapest_node;
-	
-	if(!stack)
+
+	if (!stack)
 		return ;
 	cheapest_value = LONG_MAX;
 	while (stack)

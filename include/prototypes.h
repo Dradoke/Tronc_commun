@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:12:07 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 18:51:33 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:22:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b);
 void	sort_three(t_stack_node **a);
 
 /*-----STACK_INIT-----*/
-void	init_stack_a(t_stack_node **a, char **argv);
+void	init_stack_a(t_stack_node **a, char **argv, bool allocated);
 t_stack_node	*get_cheapest(t_stack_node *stack);
 void	prep_for_push(t_stack_node **stack,
 						t_stack_node *top_node,
@@ -53,7 +53,8 @@ t_stack_node	*find_max(t_stack_node *stack);
 int	error_syntax(char *str);
 int	error_duplicate(t_stack_node *a, int n);
 void	free_stack(t_stack_node **stack);
-void	free_errors(t_stack_node **a);
+void	free_errors(t_stack_node **a, char **argv, bool allocated);
+void	free_argv(char **argv);
 
 /*-----COMMANDS-----*/
 void	pa(t_stack_node **a, t_stack_node **b, bool print);
