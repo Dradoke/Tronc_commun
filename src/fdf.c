@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 17:29:20 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:59:23 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,22 @@ char	init_img(t_data *data)
 		return (free(data->mlx), free(data->win), 0);
 	data->img.px_ptr = mlx_get_data_addr(data->img.img_ptr,
 			&data->img.bits_pp, &data->img.line_len, &data->img.endian);
-	return (1);
-}
-
-void	init(t_data *data)
-{
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		return ;
-	data->easter_egg = false;
-	data->win_width = WIN_WIDTH;
-	data->win_height = WIN_HEIGHT;
-	data->win = mlx_new_window(data->mlx, data->win_width, data->win_height,
-			"FdF1");
-	if (!data->win)
-	{
-		free(data->mlx);
-		return ;
-	}
-	data->img.img_ptr = mlx_new_image(data->mlx, data->win_width,
-			data->win_height);
-	if (!data->img.img_ptr)
-		return (free(data->win), free(data->mlx));
-	data->img.px_ptr = mlx_get_data_addr(data->img.img_ptr, &data->img.bits_pp,
-			&data->img.line_len, &data->img.endian);
-	data->img.xpm_height = 0;
-	data->img.xpm_width = 0;
 	data->img.xpm_img = mlx_xpm_file_to_image(data->mlx,
 			"./assets/paul.xpm", &data->img.xpm_width,
 			&data->img.xpm_height);
+	return (1);
+}
+
+char	init(t_data *data)
+{
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		return (0);
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "FdF1");
+	if (!data->win)
+		return (free(data->mlx), 0);
+	init_img(data);
+	return (1);
 }
 
 int	main(int argc, char **argv)

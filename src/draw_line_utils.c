@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 17:16:19 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:36:07 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	my_abs(t_line_pts line_pts, char xy)
 
 	if (xy == 'y')
 	{
-		res = line_pts.end.y - line_pts.start.y;
+		res = line_pts.end.sy - line_pts.start.sy;
 		if (res < 0)
 			return (res *= -1);
 		return (res);
 	}
 	if (xy == 'x')
 	{
-		res = line_pts.end.x - line_pts.start.x;
+		res = line_pts.end.sx - line_pts.start.sx;
 		if (res < 0)
 			return (res *= -1);
 		return (res);

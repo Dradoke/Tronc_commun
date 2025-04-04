@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:53:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 17:42:58 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:59:40 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	manualzoom(t_data *data);
 int			close_window(t_data *data);
 
 /*-----PROGRAMME-----*/
-void		init(t_data *data);
+char	init(t_data *data);
 char	init_img(t_data *data);
 #endif

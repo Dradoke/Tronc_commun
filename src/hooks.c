@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:18:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 17:18:48 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:24:26 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ int	key_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		return (close_window(data), exit(0), 1);
+	if (data->img.xpm_img && data->easter_egg == false)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img.xpm_img, 0,
+			0);
+		data->easter_egg = true;
+	}
+	else if (data->img.xpm_img && data->easter_egg == true)
+		remove_xpm_image(data);
 	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	rotate_hook(key, data);
 	translate_hook(key, data);
@@ -42,11 +50,11 @@ int	key_handler(int key, t_data *data)
 
 int	rotate_hook(int key, t_data *data)
 {
-	if (key == XK_w && data->in.rot_x > -90)
+	if (key == XK_s && data->in.rot_x > -90)
 		data->in.rot_x -= 1;
 	if (key == XK_a)
 		data->in.rot_z -= 1;
-	if (key == XK_s && data->in.rot_x < 90)
+	if (key == XK_w && data->in.rot_x < 90)
 		data->in.rot_x += 1;
 	if (key == XK_d)
 		data->in.rot_z += 1;
@@ -99,23 +107,4 @@ int	zoom_hook(int key, t_data *data)
 			data->in.zoom_bool = 1;
 	}
 	return (1);
-}
-
-int	key_press(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-	{
-		close_window(data);
-		exit(0);
-	}
-	if (keysym == XK_Up && !data->easter_egg)
-	{
-		data->easter_egg = 1;
-		if (data->img.xpm_img)
-			mlx_put_image_to_window(data->mlx, data->win, data->img.xpm_img, 0,
-				0);
-	}
-	if (keysym == XK_Down && data->easter_egg)
-		remove_xpm_image(data);
-	return (0);
 }
