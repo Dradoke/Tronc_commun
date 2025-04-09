@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:03:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 17:43:53 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:56:27 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,6 @@ int	error_duplicate(t_stack_node *a, int n)
 	return (0);
 }
 
-// void	free_stack(t_stack_node **stack)
-// {
-// 	t_stack_node	*tmp;
-// 	t_stack_node	*current;
-
-// 	if (!stack)
-// 		return ;
-// 	current = *stack;
-// 	while (current)
-// 	{
-// 		tmp = current->next;
-// 		current->nbr = 0;
-// 		free(current);
-// 		current = tmp;
-// 	}
-// 	*stack = NULL;
-// }
-
 void	free_stack(t_stack_node **stack)
 {
 	if (!stack && !(*stack))
@@ -70,8 +52,8 @@ void	free_argv(char **argv)
 
 	i = 0;
 	while (argv[i])
-			free(argv[i++]);
-		free(argv);
+		free(argv[i++]);
+	free(argv);
 }
 
 void	free_errors(t_stack_node **a, char **argv, bool allocated)

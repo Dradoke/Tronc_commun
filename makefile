@@ -6,7 +6,7 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:48:01 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/03/26 19:08:29 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/09 12:54:26 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ CMD_SRCS =	$(CMD)push.c \
 			$(CMD)rev_rotate.c \
 			$(CMD)rotate.c \
 			$(CMD)sort_stacks.c \
+			$(CMD)sort_stacks_utils.c \
 			$(CMD)sort_three.c \
 			$(CMD)swap.c
 			

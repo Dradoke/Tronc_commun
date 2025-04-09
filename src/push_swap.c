@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:35:00 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 17:45:13 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:57:45 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	t_stack_node	*b;
 	t_stack_node	*first;
 	bool			allocated;
-	
+
 	a = NULL;
 	b = NULL;
 	allocated = false;

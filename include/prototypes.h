@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:12:07 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 17:22:18 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:53:32 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	rr(t_stack_node **a, t_stack_node **b, bool print);
 
 /*-----SORT_STACKS-----*/
 void	sort_stacks(t_stack_node **a, t_stack_node **b);
+
+/*-----SORT_STACKS_UTILS-----*/
+void	min_on_top(t_stack_node **a);
 
 /*-----SORT_THREE-----*/
 void	sort_three(t_stack_node **a);

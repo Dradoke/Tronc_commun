@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:41:52 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 14:01:52 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:50:51 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static void	rev_rotate(t_stack_node **stack)
 void	rra(t_stack_node **a, bool print)
 {
 	rev_rotate(a);
-	if(!print)
+	if (!print)
 		ft_printf("rra\n");
 }
 
 void	rrb(t_stack_node **b, bool print)
 {
 	rev_rotate(b);
-	if(!print)
+	if (!print)
 		ft_printf("rrb\n");
 }
 
