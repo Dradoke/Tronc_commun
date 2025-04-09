@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:03:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:27 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:03:53 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,22 @@ int	error_syntax(char *str)
 	return (0);
 }
 
-int	error_duplicate(t_stack_node *a, int n)
+int	have_duplicates(char **av)
 {
-	if (!a)
-		return (0);
-	while (a)
+	int	i;
+	int	j;
+
+	i = 1;
+	while (av[i])
 	{
-		if (a->nbr == n)
-			return (1);
-		a = a->next;
+		j = 1;
+		while (av[j])
+		{
+			if (j != i && nbstr_cmp(av[i], av[j]) == 0)
+				return (1);
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
