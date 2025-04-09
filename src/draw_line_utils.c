@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:52:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 12:36:07 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:30:56 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	calc_offset(t_image *img, t_line_pts line, char hb)
 void	my_px_p(t_image *img, int x, int y, int color)
 {
 	int	offset;
+
 	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
 	{
 		offset = (img->line_len * y) + (x * (img->bits_pp / 8));

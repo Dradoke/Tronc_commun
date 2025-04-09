@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 12:46:59 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:29:16 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 	line.i = 0;
 	my_px_p(img, line_pts.index.sx, line_pts.index.sy,
 		rgbtoi(line_pts.start.color));
-	while (line.i++ < c_abs((int)line.dx))
+	while (line.i++ < ft_abs((int)line.dx))
 	{
 		line.x = line_pts.start.sx + line.i;
 		line.y = line_pts.start.sy + (line.i * line.m);
@@ -49,7 +49,7 @@ void	draw_vert_line(t_n_l line, t_line_pts line_pts, t_image *img)
 	else
 		line.m = 1;
 	line.i = 0;
-	while (line.i++ < c_abs((int)line.dy))
+	while (line.i++ < ft_abs((int)line.dy))
 	{
 		line.x = line_pts.start.sx + (line.i * line.m);
 		line.y = line_pts.start.sy + line.i;

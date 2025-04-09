@@ -6,38 +6,16 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:18:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 13:24:26 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:17:49 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	remove_xpm_image(t_data *data)
-{
-	if (data->img.xpm_img)
-	{
-		mlx_clear_window(data->mlx, data->win);
-		while (data->mlx->do_flush && data->easter_egg)
-			;
-		data->easter_egg = false;
-		data->mlx->do_flush = 0;
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0,
-			0);
-	}
-}
-
 int	key_handler(int key, t_data *data)
 {
 	if (key == XK_Escape)
 		return (close_window(data), exit(0), 1);
-	if (data->img.xpm_img && data->easter_egg == false)
-	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img.xpm_img, 0,
-			0);
-		data->easter_egg = true;
-	}
-	else if (data->img.xpm_img && data->easter_egg == true)
-		remove_xpm_image(data);
 	mlx_destroy_image(data->mlx, data->img.img_ptr);
 	rotate_hook(key, data);
 	translate_hook(key, data);

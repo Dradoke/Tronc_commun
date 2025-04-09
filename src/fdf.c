@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:10:38 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 12:59:23 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:31:59 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ char	init_img(t_data *data)
 		return (free(data->mlx), free(data->win), 0);
 	data->img.px_ptr = mlx_get_data_addr(data->img.img_ptr,
 			&data->img.bits_pp, &data->img.line_len, &data->img.endian);
-	data->img.xpm_img = mlx_xpm_file_to_image(data->mlx,
-			"./assets/paul.xpm", &data->img.xpm_width,
-			&data->img.xpm_height);
 	return (1);
 }
 

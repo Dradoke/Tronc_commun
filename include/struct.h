@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:49:40 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/04 12:16:10 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:37:53 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_points
 	float		y;
 	float		z;
 	t_rgb		color;
-	float			sx;
-	float			sy;
+	float		sx;
+	float		sy;
 }				t_points;
 
 typedef struct s_index
@@ -66,13 +66,10 @@ typedef struct s_line_pts
 typedef struct s_image
 {
 	void	*img_ptr;
-	void	*xpm_img;
 	char	*px_ptr;
 	int		bits_pp;
 	int		line_len;
 	int		endian;
-	int		xpm_width;
-	int		xpm_height;
 	t_index	mv_tab;
 }				t_image;
 
@@ -111,7 +108,16 @@ typedef struct s_data
 	t_tab	tab;
 	int		win_width;
 	int		win_height;
-	bool	easter_egg;
-	t_input		in;
+	t_input	in;
 }				t_data;
+
+typedef struct s_pmath
+{
+	float		cos_rx;
+	float		sin_rx;
+	float		cos_ry;
+	float		sin_ry;
+	float		cos_rz;
+	float		sin_rz;
+}				t_pmath;
 #endif

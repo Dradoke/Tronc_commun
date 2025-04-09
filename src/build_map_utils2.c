@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:16:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 17:35:51 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:29:16 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ t_tab	centermap(t_data *data)
 	int		x;
 	int		y;
 
-	yoffset = (c_abs(data->tab.lim.ymin) - c_abs(data->tab.lim.ymax)) / 2;
-	xoffset = (c_abs(data->tab.lim.xmin) - c_abs(data->tab.lim.xmax)) / 2;
+	yoffset = (ft_abs(data->tab.lim.ymin) - ft_abs(data->tab.lim.ymax)) / 2;
+	xoffset = (ft_abs(data->tab.lim.xmin) - ft_abs(data->tab.lim.xmax)) / 2;
 	y = 0;
 	while (y < data->tab.height)
 	{
