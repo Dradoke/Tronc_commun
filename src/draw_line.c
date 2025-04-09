@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:07:14 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/28 16:35:47 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:08:35 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	draw_hori_line(t_n_l line, t_line_pts line_pts, t_image *img)
 {
-	printf("\nStart x: %d, Start y: %d\nEnd x: %d, End y: %d\n", line_pts.start.sx, line_pts.start.sy, line_pts.end.sx, line_pts.end.sy);
 	line.dx = line_pts.end.sx - line_pts.start.sx;
-	printf("dx: %d", (int)line.dx);
 	line.dy = line_pts.end.sy - line_pts.start.sy;
 	if (line.dx != 0)
 		line.m = line.dy / line.dx;
