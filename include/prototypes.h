@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:12:07 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 14:06:36 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:28:19 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ char			**split(char *s, char c);
 /*-----ALGORITHMS-----*/
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 void			sort_three(t_stack_node **a);
+
+int	arg_is_number(char *av);
 
 #endif

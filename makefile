@@ -6,7 +6,7 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:48:01 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/04/09 12:54:26 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/09 15:17:48 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ LIBFT_REPO = git@github.com:Dradoke/libft.git
 
 # Fichiers sources et objets
 SRCS =		$(SRC)handle_errors.c \
+			$(SRC)handle_errors_utils.c \
 			$(SRC)init_a_to_b.c \
 			$(SRC)init_b_to_a.c \
 			$(SRC)push_swap.c \

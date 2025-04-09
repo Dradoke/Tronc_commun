@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:03:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 14:03:53 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:25:36 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	error_syntax(char *str)
 		return (1);
 	if ((*str == '+' || *str == '-') && !(str[1] >= '0' && str[1] <= '9'))
 		return (1);
-	while (*++str)
+	while (*str++)
 		if (!(*str >= '0' && *str <= '9'))
 			return (1);
 	return (0);
