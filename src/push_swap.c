@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:35:00 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 12:57:45 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:26:55 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 		argv = split(argv[1], ' ');
 		allocated = true;
 	}
-	init_stack_a(&a, argv + 1, allocated);
+	init_stack_a(&a, argv, allocated);
 	check_stack_sorted(a, b);
 	first = a;
 	while (first->prev)

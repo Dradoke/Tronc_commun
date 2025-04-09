@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:55:26 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 12:56:48 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:26:37 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	init_stack_a(t_stack_node **a, char **argv, bool allocated)
 	long	n;
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
