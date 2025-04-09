@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:03:13 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/03/26 19:08:33 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:21:47 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 # include "libft.h"
 # include "prototypes.h"
 # include "struct.h"
-
 
 #endif
