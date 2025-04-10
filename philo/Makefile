@@ -6,14 +6,15 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/04/10 12:18:02 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/10 16:22:08 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude/ -g -g3
+CFLAGS = -Wall -Wextra -Werror -Iinclude/ -g -g3 -fsanitize=thread
+# -fsanitize=address 
 
 # Dossiers
 SRC = src/
