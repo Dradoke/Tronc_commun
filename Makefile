@@ -6,7 +6,7 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/04/10 12:02:18 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/10 16:15:04 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ LDFLAGS = -Llib/libft -lft
 # Dossiers
 SRC = src/
 OBJ_DIR = obj/
-BIN = bin/
 LIB = lib/
 LIBFT_DIR = $(LIB)libft/
 
@@ -49,25 +48,28 @@ endif
 
 OBJS_CLIENT_USED = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_CLIENT_USED))
 OBJS_SERVER_USED = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_SERVER_USED))
+
 # Default target
-all:	clone_libft $(LIBFT_DIR)libft.a $(SERVER) $(CLIENT)
+NAME = client server
+all:	clone_libft $(LIBFT_DIR)libft.a $(NAME)
+
 bonus:	all
 
 # Compiler Libft
 $(LIBFT_DIR)libft.a:
 	@$(MAKE) -C $(LIBFT_DIR)
 
-# Compiler FDF
+# Compiler client et server
 $(SERVER): $(OBJS_SERVER_USED)
-	$(CC) $(OBJS_SERVER_USED) $(LDFLAGS) -o $@
+	$(CC) $(OBJS_SERVER_USED) $(LDFLAGS) -o $(SERVER)
 
 $(CLIENT): $(OBJS_CLIENT_USED)
-	$(CC) $(OBJS_CLIENT_USED) $(LDFLAGS) -o $@
+	$(CC) $(OBJS_CLIENT_USED) $(LDFLAGS) -o $(CLIENT)
 
 # Compilation des fichiers .c en .o
 $(OBJ_DIR)%.o: $(SRC)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Cloner Libft dans lib/ s'il n'existe pas
 clone_libft:
@@ -83,7 +85,7 @@ clean:
 
 # Nettoyage complet (supprime aussi l’exécutable)
 fclean: clean
-	rm -rf $(SERVER) $(SERVER_BONUS) $(CLIENT) $(CLIENT_BONUS)
+	rm -rf $(SERVER) $(CLIENT)
 
 # Rebuild from zero
 re: fclean all
