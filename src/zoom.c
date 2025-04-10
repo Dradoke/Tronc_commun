@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 17:34:33 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/10 14:33:36 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:46:24 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,32 @@ void	manualzoom(t_data *data)
 		{
 			data->tab.tab[x][y].sx *= data->in.zoom;
 			data->tab.tab[x][y].sy *= data->in.zoom;
+			x++;
+		}
+		y++;
+	}
+}
+
+void	getlim(t_tab *tab)
+{
+	int			x;
+	int			y;
+
+	tab->lim = (t_tablim){0};
+	y = 0;
+	while (y < tab->height)
+	{
+		x = 0;
+		while (x < tab->width)
+		{
+			if (tab->tab[x][y].sx <= tab->lim.xmin)
+				tab->lim.xmin = tab->tab[x][y].sx;
+			if (tab->tab[x][y].sx >= tab->lim.xmax)
+				tab->lim.xmax = tab->tab[x][y].sx;
+			if (tab->tab[x][y].sy <= tab->lim.ymin)
+				tab->lim.ymin = tab->tab[x][y].sy;
+			if (tab->tab[x][y].sy >= tab->lim.ymax)
+				tab->lim.ymax = tab->tab[x][y].sy;
 			x++;
 		}
 		y++;

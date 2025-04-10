@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:18:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 12:17:49 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:41:04 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	key_handler(int key, t_data *data)
 
 int	rotate_hook(int key, t_data *data)
 {
-	if (key == XK_s && data->in.rot_x > -90)
+	if (key == XK_s)
 		data->in.rot_x -= 1;
 	if (key == XK_a)
 		data->in.rot_z -= 1;
-	if (key == XK_w && data->in.rot_x < 90)
+	if (key == XK_w)
 		data->in.rot_x += 1;
 	if (key == XK_d)
 		data->in.rot_z += 1;

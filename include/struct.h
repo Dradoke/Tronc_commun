@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:49:40 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 12:37:53 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:44:02 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ typedef struct s_tablim
 	int			ymax;
 }				t_tablim;
 
+typedef struct s_mat4
+{
+	float		m[4][4];
+}				t_mat4;
+
 typedef struct s_tab
 {
 	t_points	**tab;
@@ -53,6 +58,7 @@ typedef struct s_tab
 	int			width;
 	int			height;
 	t_tablim	lim;
+	t_mat4		mtrx;
 }				t_tab;
 
 typedef struct s_line_pts

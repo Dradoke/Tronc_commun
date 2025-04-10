@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 15:45:43 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 17:23:59 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:49:52 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	build_tab(const char *filename, t_tab *tab)
 {
-	*tab = (t_tab){NULL, NULL, 0, 0, (t_tablim){0}};
+	*tab = (t_tab){NULL, NULL, 0, 0, (t_tablim){0}, (t_mat4){0}};
 	if (!read_map_file(tab, filename))
 		return (ft_printf("Error: ReadMapFile\n"), 0);
 	tab->tab = allocate_map(tab->width, tab->height);
