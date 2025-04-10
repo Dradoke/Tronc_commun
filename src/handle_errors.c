@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:03:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/09 17:28:58 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:55:04 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	error_duplicate(t_stack_node *a, int n)
 
 void	free_stack(t_stack_node **stack)
 {
-	if (!stack && !(*stack))
+	if (!stack || !(*stack))
 		return ;
 	if ((*stack)->next)
 		free_stack(&(*stack)->next);
