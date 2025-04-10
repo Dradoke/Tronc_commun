@@ -5,6 +5,4 @@ lib/
 bin/
 obj/
 client
-client_bonus
 server
-server_bonus
