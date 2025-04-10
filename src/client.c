@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 14:02:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/03 14:30:19 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:29:15 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	send_char(char c, pid_t srv)
 			my_kill(srv, SIGUSR2);
 		bit++;
 		while (BUSY == g_srv)
-			sleep(0.042);
+			usleep(0.042);
 		g_srv = BUSY;
 	}
 }
