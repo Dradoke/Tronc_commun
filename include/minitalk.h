@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:47:29 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/10 15:32:44 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:57:59 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
-# include "../lib/libft/libft.h"
+# include "libft.h"
 # include "prototypes.h"
 #endif

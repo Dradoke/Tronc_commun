@@ -6,13 +6,15 @@
 #    By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 14:41:04 by ngaudoui          #+#    #+#              #
-#    Updated: 2025/04/10 17:10:07 by ngaudoui         ###   ########.fr        #
+#    Updated: 2025/04/11 12:21:03 by ngaudoui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 SERVER = server
 CLIENT = client
+SERVER_BONUS = server_bonus
+CLIENT_BONUS = client_bonus
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iinclude/ -Ilib/libft -g -g3
 LDFLAGS = -Llib/libft -lft
@@ -51,23 +53,49 @@ OBJS_SERVER_USED = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SRCS_SERVER_USED))
 
 # Default target
 NAME = client server
-all:	clone_libft $(LIBFT_DIR)libft.a $(NAME)
+all:	clone_libft $(NAME)
 
-bonus:	all
+bonus:	clone_libft $(SERVER_BONUS) $(CLIENT_BONUS)
 
 # Compiler Libft
 $(LIBFT_DIR)libft.a:
-	@$(MAKE) -C $(LIBFT_DIR)
+	@if [ ! -f "$(LIBFT_DIR)libft.a" ]; then \
+		echo "Building libft..."; \
+		$(MAKE) -C $(LIBFT_DIR); \
+	else \
+		echo "libft.a already built."; \
+	fi
 
 # Compiler client et server
-$(SERVER): $(OBJS_SERVER_USED)
-	$(CC) $(OBJS_SERVER_USED) $(LDFLAGS) -o $(SERVER)
+$(SERVER):$(OBJS_SERVER_USED) $(LIBFT_DIR)libft.a
+	@if ! test -f $(SERVER); then \
+		$(CC) $(OBJS_SERVER_USED) $(LDFLAGS) -o $(SERVER); \
+	else \
+		echo "$(SERVER) is already up to date."; \
+	fi
 
-$(CLIENT): $(OBJS_CLIENT_USED)
-	$(CC) $(OBJS_CLIENT_USED) $(LDFLAGS) -o $(CLIENT)
+$(CLIENT):$(OBJS_CLIENT_USED) $(LIBFT_DIR)libft.a
+	@if ! test -f $(CLIENT); then \
+		$(CC) $(OBJS_CLIENT_USED) $(LDFLAGS) -o $(CLIENT); \
+	else \
+		echo "$(CLIENT) is already up to date."; \
+	fi
+# Compiler client et server
+$(SERVER_BONUS):$(OBJS_SERVER_USED) $(LIBFT_DIR)libft.a
+	@if ! test -f $(SERVER); then \
+		$(CC) $(OBJS_SERVER_USED) $(LDFLAGS) -o $(SERVER); \
+	else \
+		echo "$(SERVER_BONUS) is already up to date."; \
+	fi
 
+$(CLIENT_BONUS):$(OBJS_CLIENT_USED) $(LIBFT_DIR)libft.a
+	@if ! test -f $(CLIENT); then \
+		$(CC) $(OBJS_CLIENT_USED) $(LDFLAGS) -o $(CLIENT); \
+	else \
+		echo "$(CLIENT_BONUS) is already up to date."; \
+	fi
 # Compilation des fichiers .c en .o
-$(OBJ_DIR)%.o: $(SRC)%.c
+$(OBJ_DIR)%.o: $(SRC)%.c | clone_libft
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -90,4 +118,4 @@ fclean: clean
 # Rebuild from zero
 re: fclean all
 
-.PHONY: all clean fclean re clone_libft
+.PHONY: all clean fclean re bonus client server
