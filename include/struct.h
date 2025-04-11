@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 12:49:40 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/11 14:45:59 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:37:03 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_tablim
 	int			ymax;
 }				t_tablim;
 
-typedef struct	s_mat4
+typedef struct s_mat4
 {
 	float		m[4][4];
 }				t_mat4;

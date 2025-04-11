@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:18:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/10 14:41:04 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:38:31 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	zoom_hook(int key, t_data *data)
 	if (key == XK_t)
 	{
 		data->in.zoom_bool = 0;
-		data->in.zoom += 0.01;
+		data->in.zoom += data->in.zoom / 10;
 	}
 	if (key == XK_g)
 	{
 		data->in.zoom_bool = 0;
-		data->in.zoom -= 0.01;
+		data->in.zoom -= data->in.zoom / 10;
 	}
 	if (key == XK_z)
 	{

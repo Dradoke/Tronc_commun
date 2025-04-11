@@ -6,13 +6,13 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 11:06:10 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/04/10 14:47:20 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:49:39 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-static void	init_matrix(t_data *data, t_mat4 *m)
+void	init_matrix(t_data *data, t_mat4 *m)
 {
 	t_pmath	c;
 
@@ -37,7 +37,7 @@ static void	init_matrix(t_data *data, t_mat4 *m)
 	m->m[3][3] = 1.0f;
 }
 
-static void	apply_mat4(t_points *p, t_mat4 *m)
+void	apply_mat4(t_points *p, t_mat4 *m)
 {
 	p->sx = p->x * m->m[0][0] + p->y * m->m[0][1] + p->z * m->m[0][2];
 	p->sy = p->x * m->m[1][0] + p->y * m->m[1][1] + p->z * m->m[1][2];
