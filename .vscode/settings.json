@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"cooperative_groups.h": "c",
+		"stddef.h": "c",
+		"stdbool.h": "c",
+		"stdarg.h": "c",
+		"stdnoreturn.h": "c",
+		"stdatomic.h": "c"
+	}
+}
