@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 15:50:29 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 17:01:49 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:28:43 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	eat(t_philo *curr_philo)
 	pthread_mutex_unlock(&curr_philo->philo_state_mutex);
 	philo_print(curr_philo, EATING_MSG);
 	smart_usleep(curr_philo, curr_philo->data->time_to_eat);
-	if (a < b)
+	if (a < b && (curr_philo->data->nb_philos % 2) != 0)
 	{
 		first = a;
 		second = b;
@@ -80,5 +80,5 @@ void	eat(t_philo *curr_philo)
 void	philo_sleep(t_philo *curr_philo)
 {
 	philo_print(curr_philo, SLEEP_MSG);
-	smart_usleep(curr_philo, curr_philo->data->time_to_eat);
+	smart_usleep(curr_philo, curr_philo->data->time_to_sleep);
 }

@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 19:03:12 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/16 19:12:03 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:42:35 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,6 @@
 # define NB_ARGS_ERR "Error: wrong number of arguments\n"
 # define CALLOC_ERR "Error: an error occured while allocating memory\n"
 # define GETTIME_ERR "Error: gettimeofday\n"
+# define SUPINT_ERR "Error: Number is greater than INT_MAX \n"
+# define MIN_PHILO_ERR "Error: Minimum number of philosophers is one\n"
 #endif

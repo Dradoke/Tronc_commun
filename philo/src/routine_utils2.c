@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 00:29:31 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 17:05:17 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:07:53 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	smart_usleep(t_philo *philo, long duration_ms)
 		pthread_mutex_unlock(&philo->data->sim_mutex);
 		if ((get_curtime_ms() - start) >= duration_ms)
 			break ;
-		usleep(500);
+		usleep(200);
 	}
 }

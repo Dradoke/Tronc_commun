@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:00:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 16:59:54 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:54:33 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	stop_prog_die(t_data *data, t_philo *philo)
 
 void	stop_prog_meals(t_data *data)
 {
-	pthread_mutex_lock(&data->log_mutex);
+	pthread_mutex_lock(&data->sim_mutex);
 	data->sim_should_stop = TRUE;
-	pthread_mutex_unlock(&data->log_mutex);
+	pthread_mutex_unlock(&data->sim_mutex);
 }
 
 void	*monitor_routine(void *data_arg)

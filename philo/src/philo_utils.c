@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:01:32 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 16:57:37 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:24:29 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	philo_print(t_philo *curr_philo, char *msg)
 	cur = get_curtime_ms();
 	since_start = cur - curr_philo->data->start_time;
 	since_meal = cur - curr_philo->last_meal_time;
-	printf(msg, since_start, curr_philo->id, since_meal);
+	printf(msg, since_start, curr_philo->id);
 	pthread_mutex_unlock(&curr_philo->data->log_mutex);
 	pthread_mutex_unlock(&curr_philo->philo_state_mutex);
 }

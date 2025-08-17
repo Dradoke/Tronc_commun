@@ -6,11 +6,21 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:00:39 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 14:11:16 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:28:33 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static	t_bool	check_args_utils(char *argv)
+{
+	if (is_sup_int(argv) == TRUE)
+		return (ft_putstr_fd(SUPINT_ERR, STDERR_FILENO), FALSE);
+	else
+		if (ft_atoi(argv) < 0)
+			return (ft_putstr_fd(NEG_ERR, STDERR_FILENO), FALSE);
+	return (TRUE);
+}
 
 static	t_bool	check_args(int argc, char **argv)
 {
@@ -23,35 +33,19 @@ static	t_bool	check_args(int argc, char **argv)
 	while (argv[i])
 	{
 		y = 0;
+		if (argv[i][0] == '+' || argv[i][0] == '-')
+			y++;
 		while (argv[i][y])
 		{
-			if (!ft_isdigit(argv[i][y]))
+			if (!ft_isdigit(argv[i][y++]))
 				return (ft_putstr_fd(NINT_ERR, STDERR_FILENO), FALSE);
-			y++;
 		}
-		if (ft_atoi(argv[i]) < 0)
-			return (ft_putstr_fd(NEG_ERR, STDERR_FILENO), FALSE);
-		i++;
+		if (check_args_utils(argv[i++]) == FALSE)
+			return (FALSE);
+		if (ft_atoi(argv[1]) < 1)
+			return (ft_putstr_fd(MIN_PHILO_ERR, STDERR_FILENO), FALSE);
 	}
 	return (TRUE);
-}
-
-void	clear_all(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->nb_philos)
-	{
-		pthread_mutex_destroy(&data->forks[i]);
-		pthread_mutex_destroy(&data->philosophers[i].philo_state_mutex);
-		i++;
-	}
-	pthread_mutex_destroy(&data->log_mutex);
-	pthread_mutex_destroy(&data->sim_mutex);
-	free(data->philosophers);
-	free(data->forks);
-	free(data);
 }
 
 void	init_struct(t_data *data)
