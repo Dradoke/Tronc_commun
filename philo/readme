@@ -1,0 +1,22 @@
+thread = Philosopher
+mutex = fourchette
+
+Dans le projet Philosophers, chaque philosophe suit le cycle :
+
+1- Penser 🧠
+
+2- Prendre deux fourchettes 🍴 (acquisition des mutex)
+
+3- Manger 🍽️ (attente de quelques millisecondes)
+
+4- Reposer les fourchettes (libération des mutex)
+
+5- Dormir 😴
+
+On doit éviter :
+
+- Les deadlocks : Tous les philosophes attendent une fourchette qui ne sera jamais libérée.
+	Faire que les threads pair prennent en premier la fourchette de droite. Les impaires celle de gauche.
+
+- La famine (starvation) : Un philosophe ne mange jamais car il n’obtient pas ses fourchettes.
+	Files d'attente FIFO

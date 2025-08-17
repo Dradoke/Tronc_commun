@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"philo.h": "c",
+		"prototypes.h": "c",
+		"stdlib.h": "c",
+		"structs.h": "c",
+		"ft_error.h": "c",
+		"msg.h": "c"
+	}
+}

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   routine_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 12:16:00 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/16 18:42:22 by ngaudoui         ###   ########.fr       */
+/*   Created: 2025/08/17 00:29:31 by ngaudoui          #+#    #+#             */
+/*   Updated: 2025/08/17 00:29:53 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
-# include <sys/time.h>
+#include "philo.h"
 
-# include "ft_error.h"
-# include "msg.h"
-# include "structs.h"
-# include "prototypes.h"
+t_bool	start_philos(t_philo *philos)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (i < philos->data->nb_philos)
+	{
+		if (pthread_create(&philos[i].thread_id, NULL,
+				philosopher_routine, &philos[i]) != 0)
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}

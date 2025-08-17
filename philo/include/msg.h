@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   msg.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 12:16:00 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/16 18:42:22 by ngaudoui         ###   ########.fr       */
+/*   Created: 2025/08/13 21:39:41 by ngaudoui          #+#    #+#             */
+/*   Updated: 2025/08/17 01:53:18 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
-# include <sys/time.h>
-
-# include "ft_error.h"
-# include "msg.h"
-# include "structs.h"
-# include "prototypes.h"
-
+#ifndef MSG_H
+# define MSG_H
+# define THINK_MSG "\033[1;33m%ld, %d is thinking\033[1;0m\n"
+# define TAKE_FORK_MSG "\033[1;34m%ld, %d has taken a fork\033[1;0m\n"
+# define EATING_MSG "\033[1;35m%ld, %d is eating\033[1;0m\n"
+# define SLEEP_MSG "\033[1;36m%ld, %d is sleeping\033[1;0m\n"
+# define DIE_MSG "\033[1;31m%ld %d died\033[1;0m\n"
 #endif

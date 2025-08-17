@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 12:16:00 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/16 18:42:22 by ngaudoui         ###   ########.fr       */
+/*   Created: 2025/08/17 00:31:07 by ngaudoui          #+#    #+#             */
+/*   Updated: 2025/08/17 00:31:17 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
-# include <sys/time.h>
+#include "philo.h"
 
-# include "ft_error.h"
-# include "msg.h"
-# include "structs.h"
-# include "prototypes.h"
-
-#endif
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
