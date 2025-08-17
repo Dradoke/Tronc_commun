@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:13:47 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 00:49:42 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:57:22 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void			philo_sleep(t_philo *curr_philo);
 
 /* ROUTINE UTILS2 */
 t_bool			start_philos(t_philo *philos);
+void			smart_usleep(t_philo *philo, long duration_ms);
 
 /* ROUTINE */
 t_bool			start_philos(t_philo *philos);

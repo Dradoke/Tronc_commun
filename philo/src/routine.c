@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:00:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 14:18:52 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:59:54 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ void	*philosopher_routine(void *arg)
 		return (NULL);
 	}
 	if (philo->id % 2 != 0)
+		usleep(1000);
+	while (1)
 	{
-		usleep(100);
-	}
-	while (!philo->data->sim_should_stop)
-	{
+		pthread_mutex_lock(&philo->data->sim_mutex);
+		if (philo->data->sim_should_stop)
+			return (pthread_mutex_unlock(&philo->data->sim_mutex), NULL);
+		pthread_mutex_unlock(&philo->data->sim_mutex);
 		take_forks(philo);
 		eat(philo);
-		putback_forks(philo);
 		philo_sleep(philo);
 		think(philo);
 	}
@@ -65,9 +66,11 @@ t_bool	check_all_eaten(t_data *data)
 void	stop_prog_die(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->log_mutex);
-	data->sim_should_stop = TRUE;
 	printf(DIE_MSG, get_curtime_ms() - data->start_time, philo->id);
 	pthread_mutex_unlock(&data->log_mutex);
+	pthread_mutex_lock(&data->sim_mutex);
+	data->sim_should_stop = TRUE;
+	pthread_mutex_unlock(&data->sim_mutex);
 	pthread_mutex_unlock(&philo->philo_state_mutex);
 }
 
@@ -102,7 +105,7 @@ void	*monitor_routine(void *data_arg)
 		}
 		if (data->nb_meals != -1 && all_eaten_enough == TRUE)
 			return (stop_prog_meals(data), NULL);
-		usleep(1000);
+		usleep(500);
 	}
 	return (NULL);
 }
