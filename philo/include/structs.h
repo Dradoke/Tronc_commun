@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 15:22:48 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 00:50:46 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 14:01:49 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data
 	long			time_to_sleep;
 	int				nb_meals;
 	long			start_time;
+	t_bool			start_flag;
 	t_bool			sim_should_stop;
 	pthread_mutex_t	sim_mutex;
 	pthread_mutex_t	log_mutex;

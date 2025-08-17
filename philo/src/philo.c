@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:00:39 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 01:51:20 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 14:11:16 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	main(int argc, char **argv)
 	data = init_data(argv);
 	init_struct(data);
 	data->start_time = get_curtime_ms();
-	i = 0;
 	init_last_meal(data);
 	if (start_philos(data->philosophers) == FALSE)
 		return (clear_all(data), 1);

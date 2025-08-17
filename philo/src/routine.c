@@ -6,7 +6,7 @@
 /*   By: ngaudoui <ngaudoui@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:00:02 by ngaudoui          #+#    #+#             */
-/*   Updated: 2025/08/17 01:43:16 by ngaudoui         ###   ########.fr       */
+/*   Updated: 2025/08/17 14:18:52 by ngaudoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,8 @@ t_bool	check_all_eaten(t_data *data)
 
 void	stop_prog_die(t_data *data, t_philo *philo)
 {
-	pthread_mutex_lock(&data->sim_mutex);
-	data->sim_should_stop = TRUE;
-	pthread_mutex_unlock(&data->sim_mutex);
 	pthread_mutex_lock(&data->log_mutex);
+	data->sim_should_stop = TRUE;
 	printf(DIE_MSG, get_curtime_ms() - data->start_time, philo->id);
 	pthread_mutex_unlock(&data->log_mutex);
 	pthread_mutex_unlock(&philo->philo_state_mutex);
@@ -75,9 +73,9 @@ void	stop_prog_die(t_data *data, t_philo *philo)
 
 void	stop_prog_meals(t_data *data)
 {
-	pthread_mutex_lock(&data->sim_mutex);
+	pthread_mutex_lock(&data->log_mutex);
 	data->sim_should_stop = TRUE;
-	pthread_mutex_unlock(&data->sim_mutex);
+	pthread_mutex_unlock(&data->log_mutex);
 }
 
 void	*monitor_routine(void *data_arg)
@@ -104,7 +102,7 @@ void	*monitor_routine(void *data_arg)
 		}
 		if (data->nb_meals != -1 && all_eaten_enough == TRUE)
 			return (stop_prog_meals(data), NULL);
-		usleep(100);
+		usleep(1000);
 	}
 	return (NULL);
 }
